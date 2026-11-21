@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minto Wedding — Private Invitation Editor</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Poppins:wght@300;400;500;600;700&family=Rozha+One&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --burgundy: #480C16;
+      --burgundy-dark: #27060B;
+      --gold: #D4AF37;
+      --gold-light: #F7E7A9;
+      --ivory: #FAF6F0;
+      --card-bg: #FFFFFF;
+      --border: #E8D8C8;
+      --text: #2C1810;
+      --text-muted: #6B5B53;
+      --success: #28a745;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #F4EFEA;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    /* Top Sticky Navigation */
+    .admin-header {
+      background: var(--burgundy-dark);
+      color: #FFF;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 2px solid var(--gold);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .admin-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.25rem;
+      color: var(--gold-light);
+      font-weight: 700;
+    }
+
+    .brand-sub {
+      font-size: 0.75rem;
+      color: #DFC8A8;
+      background: rgba(212, 175, 55, 0.2);
+      padding: 2px 8px;
+      border-radius: 12px;
+    }
+
+    .admin-top-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: none;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn-save {
+      background: linear-gradient(135deg, #ECC876, #D4AF37);
+      color: var(--burgundy-dark);
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+    }
+    .btn-save:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(212, 175, 55, 0.6); }
+
+    .btn-preview {
+      background: rgba(255,255,255,0.12);
+      color: #FFF;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .btn-preview:hover { background: rgba(255,255,255,0.25); }
+
+    /* Layout */
+    .admin-container {
+      max-width: 1100px;
+      margin: 30px auto 60px;
+      padding: 0 20px;
+    }
+
+    .tabs-nav {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 12px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tab-btn {
+      background: #FFF;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 10px 18px;
+      border-radius: 30px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn.active {
+      background: var(--burgundy);
+      color: var(--gold-light);
+      border-color: var(--burgundy);
+      box-shadow: 0 4px 12px rgba(72, 12, 22, 0.2);
+    }
+
+    .editor-section {
+      display: none;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 28px;
+      border: 1px solid var(--border);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+      margin-bottom: 24px;
+    }
+
+    .editor-section.active {
+      display: block;
+    }
+
+    .section-title {
+      font-family: 'Cinzel', 'Rozha One', serif;
+      font-size: 1.4rem;
+      color: var(--burgundy);
+      margin-bottom: 8px;
+    }
+
+    .section-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    /* Form Fields */
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: 8px;
+      border: 1px solid #D0C0B0;
+      font-size: 0.92rem;
+      font-family: inherit;
+      background: #FDFCFB;
+      transition: border-color 0.2s ease;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 85px;
+    }
+
+    /* Photo Reposition & Crop Control Card */
+    .photo-crop-card {
+      background: #FAF7F2;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .preview-arch-box {
+      width: 160px;
+      height: 213px; /* 3:4 ratio */
+      border-radius: 80px 80px 14px 14px;
+      border: 3px solid var(--gold);
+      overflow: hidden;
+      margin: 0 auto;
+      background: #EBE0D2;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+      position: relative;
+    }
+
+    .preview-arch-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .slider-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .slider-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Event Card in Admin */
+    .admin-event-card {
+      background: #FAF7F2;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .event-card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 10px;
+    }
+
+    .event-card-head h4 {
+      font-family: 'Rozha One', serif;
+      font-size: 1.25rem;
+      color: var(--burgundy);
+    }
+
+    /* Gallery Grid in Admin */
+    .admin-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 14px;
+      margin-top: 15px;
+    }
+
+    .admin-gallery-item {
+      position: relative;
+      aspect-ratio: 1/1;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .admin-gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .btn-delete-photo {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      background: rgba(220, 53, 69, 0.9);
+      color: #FFF;
+      border: none;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+    }
+
+    /* Toast Notification */
+    #adminToast {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: var(--burgundy);
+      color: var(--gold-light);
+      border: 1px solid var(--gold);
+      padding: 14px 24px;
+      border-radius: 8px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+      z-index: 9999;
+      display: none;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Sticky Header -->
+  <header class="admin-header">
+    <div class="admin-brand">
+      <span style="font-size: 1.5rem;">💌</span>
+      <div>
+        <div class="brand-title">Minto Wedding Editor</div>
+        <div class="brand-sub">Private Control Panel</div>
+      </div>
+    </div>
+    <div class="admin-top-actions">
+      <a href="/" target="_blank" class="btn btn-preview">
+        <span>👁️</span> निमंत्रण देखें
+      </a>
+      <button id="saveChangesBtn" class="btn btn-save">
+        <span>💾</span> बदलाव सुरक्षित करें
+      </button>
+    </div>
+  </header>
+
+  <main class="admin-container">
+
+    <!-- Navigation Tabs -->
+    <nav class="tabs-nav">
+      <button class="tab-btn active" data-tab="tab-couple">💑 वर एवं वधू (Couple)</button>
+      <button class="tab-btn" data-tab="tab-events">📅 4 मुख्य कार्यक्रम (Events)</button>
+      <button class="tab-btn" data-tab="tab-countdown">⏳ काउंटडाउन (Countdown)</button>
+      <button class="tab-btn" data-tab="tab-families">👨‍👩‍👧‍👦 परिवार परिचय (Families)</button>
+      <button class="tab-btn" data-tab="tab-story">📖 हमारी दास्तान (Story)</button>
+      <button class="tab-btn" data-tab="tab-gallery">🖼️ फोटो गैलरी (Gallery)</button>
+      <button class="tab-btn" data-tab="tab-company">🏢 कंपनी लोगो (Company Logo)</button>
+      <button class="tab-btn" data-tab="tab-rsvp">💬 व्हाट्सएप RSVP</button>
+      <button class="tab-btn" data-tab="tab-music">🎵 बैकग्राउंड संगीत (Music)</button>
+    </nav>
+
+    <!-- TAB 1: BRIDE & GROOM -->
+    <section id="tab-couple" class="editor-section active">
+      <h3 class="section-title">वर एवं वधू विवरण व फोटो समायोजन</h3>
+      <p class="section-desc">
+        वधू और वर की तस्वीरें अलग-अलग अपलोड करें और नीचे दिए गए ज़ूम एवं पैन स्लाइडर से उनके चेहरे को फ्रेम में एकदम सटीक सेट करें।
+      </p>
+
+      <div class="form-grid">
+        
+        <!-- BRIDE EDIT CARD -->
+        <div class="photo-crop-card">
+          <h4 style="color: var(--burgundy); font-family: 'Rozha One', serif; font-size: 1.2rem;">👰 वधू विवरण (Bride)</h4>
+          
+          <div class="preview-arch-box">
+            <img id="adminBridePreview" src="/uploads/bride.jpg" alt="Bride Preview" />
+          </div>
+
+          <div class="form-group">
+            <label>वधू का नाम (Hindi)</label>
+            <input type="text" id="brideNameInput" class="form-control" value="अदिति" />
+          </div>
+
+          <div class="form-group">
+            <label>पद / संबोधन (उदा. सुपुत्री)</label>
+            <input type="text" id="brideTitleInput" class="form-control" value="सुपुत्री" />
+          </div>
+
+          <div class="form-group">
+            <label>नई फोटो अपलोड करें</label>
+            <input type="file" id="brideFileInput" accept="image/*" class="form-control" />
+          </div>
+
+          <!-- Position & Zoom Controls -->
+          <div class="slider-group">
+            <div class="slider-label"><span>फ़ोटो ज़ूम (Zoom)</span><span id="brideZoomVal">100%</span></div>
+            <input type="range" id="brideZoomSlider" min="50" max="200" value="100" />
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-label"><span>दाएं-बाएं सेट करें (Pan X)</span><span id="brideXVal">50%</span></div>
+            <input type="range" id="brideXSlider" min="0" max="100" value="50" />
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-label"><span>ऊपर-नीचे सेट करें (Pan Y)</span><span id="brideYVal">35%</span></div>
+            <input type="range" id="brideYSlider" min="0" max="100" value="35" />
+          </div>
+        </div>
+
+        <!-- GROOM EDIT CARD -->
+        <div class="photo-crop-card">
+          <h4 style="color: var(--burgundy); font-family: 'Rozha One', serif; font-size: 1.2rem;">🤵 वर विवरण (Groom)</h4>
+          
+          <div class="preview-arch-box">
+            <img id="adminGroomPreview" src="/uploads/groom.jpg" alt="Groom Preview" />
+          </div>
+
+          <div class="form-group">
+            <label>वर का नाम (Hindi)</label>
+            <input type="text" id="groomNameInput" class="form-control" value="रोहन" />
+          </div>
+
+          <div class="form-group">
+            <label>पद / संबोधन (उदा. सुपुत्र)</label>
+            <input type="text" id="groomTitleInput" class="form-control" value="सुपुत्र" />
+          </div>
+
+          <div class="form-group">
+            <label>नई फोटो अपलोड करें</label>
+            <input type="file" id="groomFileInput" accept="image/*" class="form-control" />
+          </div>
+
+          <!-- Position & Zoom Controls -->
+          <div class="slider-group">
+            <div class="slider-label"><span>फ़ोटो ज़ूम (Zoom)</span><span id="groomZoomVal">100%</span></div>
+            <input type="range" id="groomZoomSlider" min="50" max="200" value="100" />
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-label"><span>दाएं-बाएं सेट करें (Pan X)</span><span id="groomXVal">50%</span></div>
+            <input type="range" id="groomXSlider" min="0" max="100" value="50" />
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-label"><span>ऊपर-नीचे सेट करें (Pan Y)</span><span id="groomYVal">30%</span></div>
+            <input type="range" id="groomYSlider" min="0" max="100" value="30" />
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Welcome Message & Shlok -->
+      <div style="margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px;">
+        <h4 style="color: var(--burgundy); margin-bottom: 15px;">पवित्र श्लोक एवं स्वागत संदेश</h4>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>प्रारंभिक श्लोक</label>
+            <input type="text" id="welcomeShlokInput" class="form-control" value="|| श्री गणेशाय नमः ||" />
+          </div>
+          <div class="form-group">
+            <label>मुख्य शीर्षक</label>
+            <input type="text" id="mainTitleInput" class="form-control" value="मांगलिक परिणयोत्सव" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>आमंत्रण संदेश</label>
+          <textarea id="welcomeMessageInput" class="form-control"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: FOUR MAIN EVENTS -->
+    <section id="tab-events" class="editor-section">
+      <h3 class="section-title">शादी के 4 मुख्य मांगलिक कार्यक्रम</h3>
+      <p class="section-desc">
+        ये चारों कार्यक्रम सही क्रम में सेट हैं: 1. सगाई (28 Nov 2026), 2. हल्दी (29 Nov 2026), 3. बारात (30 Nov 2026), 4. रिसेप्शन (1 Dec 2026)। यहाँ आप प्रत्येक कार्यक्रम का समय, वेन्यू और गूगल मैप्स लिंक अपडेट कर सकते हैं।
+      </p>
+
+      <div id="adminEventsList">
+        <!-- Rendered by admin.js for each of the 4 events -->
+      </div>
+    </section>
+
+    <!-- TAB 3: COUNTDOWN -->
+    <section id="tab-countdown" class="editor-section">
+      <h3 class="section-title">काउंटडाउन टाइमर सेटिंग्स</h3>
+      <p class="section-desc">
+        काउंटडाउन प्रथम कार्यक्रम <b>सगाई (28 नवम्बर 2026)</b> पर केंद्रित है (Asia/Kolkata)।
+      </p>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label>लक्ष्य दिनांक व समय (Target Date/Time)</label>
+          <input type="datetime-local" id="countdownTargetInput" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label>डेमो समय लेबल</label>
+          <input type="text" id="countdownDemoNoteInput" class="form-control" />
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: FAMILIES -->
+    <section id="tab-families" class="editor-section">
+      <h3 class="section-title">परिवार परिचय (Families)</h3>
+      <p class="section-desc">वर पक्ष और वधू पक्ष के बड़ों और माता-पिता के नाम व निवास स्थान।</p>
+
+      <div class="form-grid">
+        <!-- Groom's Family -->
+        <div class="photo-crop-card">
+          <h4 style="color: var(--burgundy); font-family: 'Rozha One', serif;">वर पक्ष (Groom's Side)</h4>
+          <div class="form-group">
+            <label>दादाजी</label>
+            <input type="text" id="groomGfInput" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>दादीजी</label>
+            <input type="text" id="groomGmInput" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>पिताजी</label>
+            <input type="text" id="groomFatherInput" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>माताजी</label>
+            <input type="text" id="groomMotherInput" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>निवास / शहर</label>
+            <input type="text" id="groomCityInput" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>पारिवारिक संदेश</label>
+            <textarea id="groomQuoteInput" class="form-control"></textarea>
+          </div>
+        </div>
+
+        <!-- Bride's Family -->
+        <div class="photo-crop-card">
+          <h4 style="color: var(--burgundy); font-family: 'Rozha One', serif;">वधू पक्ष (Bride's Side)</h4>
+          <div class="form-group">
+            <label>दादाजी</label>
+            <input type="text" id="brideGfInput" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>दादीजी</label>
+            <input type="text" id="brideGmInput" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>पिताजी</label>
+            <input type="text" id="brideFatherInput" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>माताजी</label>
+            <input type="text" id="brideMotherInput" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>निवास / शहर</label>
+            <input type="text" id="brideCityInput" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>पारिवारिक संदेश</label>
+            <textarea id="brideQuoteInput" class="form-control"></textarea>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: STORY -->
+    <section id="tab-story" class="editor-section">
+      <h3 class="section-title">हमारी दास्तान (Our Story)</h3>
+      <p class="section-desc">जोड़े के प्रेम और विवाह के महत्वपूर्ण पड़ाव।</p>
+      <div id="adminStoryList"></div>
+    </section>
+
+    <!-- TAB 6: GALLERY -->
+    <section id="tab-gallery" class="editor-section">
+      <h3 class="section-title">फोटो गैलरी प्रबंधन</h3>
+      <p class="section-desc">अतिरिक्त तस्वीरें अपलोड करें। मेहमानों को ये तस्वीरें ज़ूम करने योग्य लाइटबॉक्स में दिखेंगी।</p>
+
+      <div class="form-group">
+        <label>नई तस्वीरें अपलोड करें (एक साथ कई तस्वीरें चुन सकते हैं)</label>
+        <input type="file" id="galleryFilesInput" accept="image/*" multiple class="form-control" />
+      </div>
+
+      <h4 style="margin-top: 20px; color: var(--burgundy);">वर्तमान गैलरी तस्वीरें:</h4>
+      <div class="admin-gallery-grid" id="adminGalleryGrid"></div>
+    </section>
+
+    <!-- TAB 7: COMPANY BRANDING (SMALL & UNDERSTATED ONLY AT END) -->
+    <section id="tab-company" class="editor-section">
+      <h3 class="section-title">कंपनी लोगो एवं फुटर ब्रांडिंग</h3>
+      <p class="section-desc">
+        निर्देशानुसार, कंपनी का लोगो <b>केवल और केवल</b> आमंत्रण पत्र के सबसे अंत में (फुटर में) "आपका इंतज़ार रहेगा" के नीचे बहुत ही सूक्ष्म एवं सुरुचिपूर्ण रूप में प्रदर्शित होगा।
+      </p>
+
+      <div class="form-grid">
+        <div>
+          <div class="form-group">
+            <label>कंपनी का नाम</label>
+            <input type="text" id="companyNameInput" class="form-control" value="Minto Wedding Planners" />
+          </div>
+          <div class="form-group">
+            <label>फुटर टैगलाइन</label>
+            <input type="text" id="companyTaglineInput" class="form-control" value="Crafted with love by Minto Wedding" />
+          </div>
+          <div class="form-group">
+            <label>पारदर्शी PNG/SVG लोगो अपलोड करें</label>
+            <input type="file" id="companyLogoInput" accept="image/*" class="form-control" />
+          </div>
+          <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
+            <input type="checkbox" id="showCompanyLogoCheckbox" style="width: 18px; height: 18px;" />
+            <label for="showCompanyLogoCheckbox" style="margin: 0; cursor: pointer;">
+              फुटर में कंपनी लोगो दिखाएं (Show subtle logo in footer)
+            </label>
+          </div>
+        </div>
+
+        <div style="background: #FAF7F2; padding: 20px; border-radius: 12px; border: 1px solid var(--border); text-align: center;">
+          <label style="display: block; margin-bottom: 10px; font-weight: 600;">लोगो प्रीव्यू (अंतिम दृश्य कैसा दिखेगा):</label>
+          <div style="background: #27060B; padding: 25px; border-radius: 8px; border: 1px solid #D4AF37;">
+            <div style="font-size: 0.8rem; color: #DFC8A8; margin-bottom: 8px;">आपका इंतज़ार रहेगा</div>
+            <img id="companyLogoPreviewImg" src="" alt="No Logo" style="max-height: 32px; max-width: 130px; object-fit: contain; margin: 0 auto; display: none;" />
+            <div id="companyLogoPlaceholderText" style="color: #DFC8A8; font-size: 0.75rem; font-style: italic;">
+              [कंपनी लोगो अपलोड करने पर यहाँ दिखेगा]
+            </div>
+            <div id="companyTaglinePreview" style="font-size: 0.72rem; color: #C0B0A0; margin-top: 6px;">
+              Crafted with love by Minto Wedding
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 8: RSVP -->
+    <section id="tab-rsvp" class="editor-section">
+      <h3 class="section-title">व्हाट्सएप RSVP एवं संपर्क</h3>
+      <p class="section-desc">मेहमानों द्वारा अपनी उपस्थिति की पुष्टि हेतु व्हाट्सएप नंबर व स्वचालित संदेश।</p>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label>व्हाट्सएप नंबर (कंट्री कोड सहित, उदा. 919876543210)</label>
+          <input type="text" id="rsvpWhatsappInput" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label>स्वचालित संदेश (Prefilled Message)</label>
+          <textarea id="rsvpMessageInput" class="form-control"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 9: MUSIC -->
+    <section id="tab-music" class="editor-section">
+      <h3 class="section-title">बैकग्राउंड संगीत (Audio Music)</h3>
+      <p class="section-desc">
+        आमंत्रण पत्र में बजने वाला पारंपरिक वाद्य संगीत। (ब्राउज़र नीतियों के अनुसार संगीत शुरू में म्यूट रहता है, मेहमान बटन दबाकर सुन सकते हैं)।
+      </p>
+
+      <div class="form-group">
+        <label>कस्टम ऑडियो MP3/WAV अपलोड करें</label>
+        <input type="file" id="musicFileInput" accept="audio/*" class="form-control" />
+      </div>
+
+      <div style="background: #FAF7F2; padding: 20px; border-radius: 12px; border: 1px solid var(--border); margin-top: 15px;">
+        <label style="display: block; margin-bottom: 10px; font-weight: 600;">वर्तमान सक्रिय संगीत सुनें:</label>
+        <audio id="adminAudioPlayer" controls style="width: 100%; max-width: 400px;"></audio>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Notification Toast -->
+  <div id="adminToast">बदलाव सुरक्षित हो गए!</div>
+
+  <script src="/js/admin.js"></script>
+</body>
+</html>

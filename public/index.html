@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>शुभ विवाह निमंत्रण | Royal Indian Wedding Invitation</title>
+  <meta name="description" content="अदिति एवं रोहन के शुभ विवाह का पावन निमंत्रण पत्र। मांगलिक परिणयोत्सव: 28 नवम्बर से 1 दिसम्बर 2026।" />
+
+  <!-- Favicon & Touch Icon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>" />
+
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="damask-pattern">
+
+  <!-- Floating Audio & Reduced Motion Controls -->
+  <div class="floating-controls">
+    <button id="motionToggleBtn" class="ctrl-btn" title="कम एनिमेशन (Reduced Motion)" aria-label="Toggle Reduced Motion">
+      <span>⚡</span>
+    </button>
+    <button id="audioToggleBtn" class="ctrl-btn sound-muted" title="संगीत शुरू करें" aria-label="Toggle Wedding Music">
+      <div class="audio-wave">
+        <span></span><span></span><span></span><span></span>
+      </div>
+    </button>
+  </div>
+
+  <!-- Background Falling Petals Canvas -->
+  <canvas id="petalCanvas"></canvas>
+
+  <!-- ==========================================================================
+       1. CINEMATIC 3D WAX-SEALED ENVELOPE OPENING EXPERIENCE
+       ========================================================================== -->
+  <div id="envelopeExperience">
+    <div class="envelope-wrapper">
+      <div class="envelope-stage">
+        
+        <!-- The Envelope Container -->
+        <div class="envelope">
+          <!-- Embossed Corner Flourishes -->
+          <svg class="corner-flourish corner-tl" viewBox="0 0 100 100">
+            <path d="M10,10 Q50,10 50,50 Q10,50 10,10 M10,10 L90,10 L90,20 L20,20 L20,90 L10,90 Z" fill="#D4AF37" />
+          </svg>
+          <svg class="corner-flourish corner-tr" viewBox="0 0 100 100">
+            <path d="M10,10 Q50,10 50,50 Q10,50 10,10 M10,10 L90,10 L90,20 L20,20 L20,90 L10,90 Z" fill="#D4AF37" />
+          </svg>
+          <svg class="corner-flourish corner-bl" viewBox="0 0 100 100">
+            <path d="M10,10 Q50,10 50,50 Q10,50 10,10 M10,10 L90,10 L90,20 L20,20 L20,90 L10,90 Z" fill="#D4AF37" />
+          </svg>
+          <svg class="corner-flourish corner-br" viewBox="0 0 100 100">
+            <path d="M10,10 Q50,10 50,50 Q10,50 10,10 M10,10 L90,10 L90,20 L20,20 L20,90 L10,90 Z" fill="#D4AF37" />
+          </svg>
+
+          <!-- Inside Rising Invitation Card Peek -->
+          <div class="invitation-card-peek">
+            <div style="font-family: var(--font-devanagari); color: var(--burgundy); font-size: 1rem; font-weight: 700; margin-bottom: 4px;">
+              || श्री गणेशाय नमः ||
+            </div>
+            <div style="font-family: var(--font-heading); color: var(--gold-main); font-size: 1.3rem; letter-spacing: 1px;">
+              मांगलिक परिणयोत्सव
+            </div>
+            <div class="ornate-divider" style="margin: 8px auto;">
+              <span class="ornate-symbol">❦</span>
+            </div>
+            <div style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--burgundy-rich); margin-top: 5px;">
+              <span id="envelopeGroomName">चि. चन्द्रशेखर</span> 
+              <span style="font-family: var(--font-script); color: var(--gold-main); font-size: 1.8rem; margin: 0 4px;">संग</span> 
+              <span id="envelopeBrideName">सौ. का. चन्द्रकिरण</span>
+            </div>
+            <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 6px; letter-spacing: 0.5px;">
+              29 नवम्बर — 1 दिसम्बर 2026
+            </div>
+          </div>
+
+          <!-- 3D Folding Top Flap -->
+          <div class="envelope-flap-top"></div>
+
+          <!-- Glowing Authentic Wax Seal -->
+          <div class="wax-seal-container" id="waxSeal">
+            <div class="wax-seal">
+              <div class="seal-ring"></div>
+              <div class="wax-seal-symbol">
+                शुभ<br />विवाह
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Action Button -->
+      <button class="open-invitation-btn" id="openInvitationBtn">
+        <span>💌</span>
+        <span>निमंत्रण खोलें</span>
+      </button>
+
+      <p style="color: #DFC8A8; font-size: 0.8rem; margin-top: 14px; text-align: center; letter-spacing: 0.5px;">
+        ✨ खोलने के लिए मुहर या बटन पर स्पर्श करें
+      </p>
+
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       2. MAIN LUXURY WEDDING INVITATION WEBSITE
+       ========================================================================== -->
+  <main id="invitationMain">
+    <div class="royal-container">
+
+      <!-- Header & Auspicious Inscription -->
+      <header class="header-sacred">
+        <div class="sacred-shlok" id="sacredShlok">|| श्री गणेशाय नमः ||</div>
+        <h1 class="main-title gold-gradient-text" id="mainTitle">साहू परिवार का सस्नेह आमंत्रण</h1>
+        <p class="sub-title" id="subTitle">चन्द्रशेखर संग चन्द्रकिरण</p>
+        <div class="ornate-divider">
+          <span class="ornate-symbol">❧ ❦ ☙</span>
+        </div>
+      </header>
+
+      <!-- Couple Portraits Reveal (Bride & Groom) -->
+      <section class="couple-reveal-section">
+        <div class="couple-portraits-wrapper">
+          
+          <!-- Bride Portrait Card -->
+          <div class="portrait-card bride-card">
+            <div class="portrait-frame">
+              <img id="bridePhotoImg" src="/uploads/bride.jpg" alt="वधू की तस्वीर" />
+              <div class="portrait-badge">
+                <div class="portrait-name" id="brideName">सौ. का. चन्द्रकिरण</div>
+                <div class="portrait-title" id="brideTitle">सुपुत्री (दुर्ग)</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Center Wedding Knot Ornament -->
+          <div class="couple-union-knot" title="पावन परिणय">
+            <span>&</span>
+          </div>
+
+          <!-- Groom Portrait Card -->
+          <div class="portrait-card groom-card">
+            <div class="portrait-frame">
+              <img id="groomPhotoImg" src="/uploads/groom.jpg" alt="वर की तस्वीर" />
+              <div class="portrait-badge">
+                <div class="portrait-name" id="groomName">चि. चन्द्रशेखर</div>
+                <div class="portrait-title" id="groomTitle">सुपुत्र (कुरुद, धमतरी)</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Welcome Message Box -->
+        <div class="welcome-quote-box">
+          <p id="welcomeMessageText">
+            परमपिता परमेश्वर की असीम अनुकंपा से, हमारे प्रिय वर एवं वधू के शुभ विवाह के इस पावन अवसर पर आप सपरिवार सादर आमंत्रित हैं।
+          </p>
+        </div>
+      </section>
+
+      <!-- Live Wedding Countdown Timer -->
+      <section class="countdown-section">
+        <h3 class="countdown-title">शुभ घड़ी की प्रतीक्षा</h3>
+        <div class="countdown-badge" id="countdownBadge">
+          सगाई का शुभ मुहूर्त: 28 नवम्बर 2026 (प्रातः 10:00 बजे)
+        </div>
+
+        <div class="countdown-grid">
+          <div class="countdown-box">
+            <div class="countdown-num" id="countDays">00</div>
+            <div class="countdown-label">दिन</div>
+          </div>
+          <div class="countdown-box">
+            <div class="countdown-num" id="countHours">00</div>
+            <div class="countdown-label">घंटे</div>
+          </div>
+          <div class="countdown-box">
+            <div class="countdown-num" id="countMinutes">00</div>
+            <div class="countdown-label">मिनट</div>
+          </div>
+          <div class="countdown-box">
+            <div class="countdown-num" id="countSeconds">00</div>
+            <div class="countdown-label">सेकंड</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sticky Deck Quick Navigator Bar -->
+      <nav class="events-sticky-nav" id="royalDeckNav" aria-label="Deck Navigation">
+        <!-- Dynamically populated: 💍 सगाई | 🌼 हल्दी | 🥁 बारात | ✨ रिसेप्शन | 📖 कहानी | 👨‍👩‍👧‍👦 परिवार | 🖼️ गैलरी | 💌 RSVP -->
+      </nav>
+
+      <!-- ==========================================================================
+           ROYAL STACKED CARD DECK (INSTAGRAM REEL & APPLE-STYLE STACKING SCROLL)
+           Each section is a luxury card in a physical deck that stacks and reveals on scroll.
+           ========================================================================== -->
+      <div class="royal-deck-container" id="royalDeckContainer">
+
+        <!-- 4 EVENTS INJECTED DYNAMICALLY BY APP.JS AS DECK CARDS (सगाई, हल्दी, बारात, रिसेप्शन) -->
+        <div id="deckEventsWrapper"></div>
+
+        <!-- CARD 5: हमारी दास्तान (OUR STORY) -->
+        <section class="royal-deck-card story-card-deck" id="deck-story">
+          <div class="deck-card-inner">
+            <div class="section-header in-view">
+              <span class="section-badge">दो रूहों का पावन मिलन</span>
+              <h2 class="section-title gold-gradient-text">हमारी दास्तान</h2>
+              <div class="ornate-divider"><span class="ornate-symbol">❧</span></div>
+            </div>
+            <div class="story-timeline" id="storyTimeline">
+              <!-- Story items injected dynamically -->
+            </div>
+          </div>
+        </section>
+
+        <!-- CARD 6: परिवार परिचय (FAMILIES) -->
+        <section class="royal-deck-card families-card-deck" id="deck-families">
+          <div class="deck-card-inner">
+            <div class="section-header in-view">
+              <span class="section-badge">संस्कार और स्नेह</span>
+              <h2 class="section-title gold-gradient-text">परिवार परिचय</h2>
+              <div class="ornate-divider"><span class="ornate-symbol">❦</span></div>
+            </div>
+            <div class="family-cards-grid">
+              <div class="family-card in-view" id="groomFamilyCard"></div>
+              <div class="family-card in-view" id="brideFamilyCard"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CARD 7: यादों के झरोखे (PHOTO GALLERY) -->
+        <section class="royal-deck-card gallery-card-deck" id="deck-gallery">
+          <div class="deck-card-inner">
+            <div class="section-header in-view">
+              <span class="section-badge">मधुर स्मृतियां</span>
+              <h2 class="section-title gold-gradient-text">यादों के झरोखे</h2>
+              <div class="ornate-divider"><span class="ornate-symbol">❖</span></div>
+            </div>
+            <div class="gallery-grid" id="galleryGrid">
+              <!-- Gallery photos injected dynamically -->
+            </div>
+          </div>
+        </section>
+
+        <!-- CARD 8: कृपया उपस्थिति सूचित करें (RSVP VIA WHATSAPP) -->
+        <section class="royal-deck-card rsvp-card-deck" id="deck-rsvp">
+          <div class="deck-card-inner rsvp-box in-view" style="max-width: 100%; border: none; box-shadow: none;">
+            <div style="font-size: 2.2rem; margin-bottom: 8px;">💌</div>
+            <h3 style="font-family: var(--font-heading); font-size: 1.7rem; color: var(--burgundy);">
+              कृपया अपनी उपस्थिति सूचित करें
+            </h3>
+            <p style="font-size: 0.92rem; color: var(--text-muted); margin-top: 6px;">
+              आपकी उपस्थिति ही हमारा सबसे बड़ा उपहार है। व्हाट्सएप्प द्वारा अपनी शुभकामना एवं सहमति भेजें।
+            </p>
+
+            <div>
+              <a id="whatsappRsvpBtn" href="#" target="_blank" class="btn-whatsapp-rsvp">
+                <span>💬</span> WhatsApp पर RSVP भेजें
+              </a>
+            </div>
+
+            <div>
+              <button id="shareInviteBtn" class="share-invite-btn">
+                <span>📤</span> निमंत्रण पत्र शेयर करें (Share)
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- CARD 9: आपका इंतज़ार रहेगा (GRAND CLOSING CLIMAX) -->
+        <footer class="royal-deck-card closing-card-deck" id="deck-closing">
+          <div class="deck-card-inner closing-scene in-view" style="background: none; padding: 30px 15px;">
+            <p class="closing-blessing" id="closingBlessing">स्नेह, आशीर्वाद और खुशियों के इस उत्सव में...</p>
+            <h2 class="closing-grand-tagline gold-gradient-text" id="closingTagline">आपका इंतज़ार रहेगा</h2>
+            <p style="max-width: 420px; margin: 0 auto; font-size: 0.92rem; color: var(--text-muted);" id="closingMessage">
+              आपकी गरिमामयी उपस्थिति हमारे इस मांगलिक उत्सव को और भी आनंदमय बनाएगी।
+            </p>
+
+            <!-- Company Logo ONLY in this final scene, small & understated -->
+            <div class="footer-company-wrapper" id="footerCompanyWrapper" style="display: none;">
+              <img id="footerCompanyLogo" class="footer-company-logo" src="" alt="Company Logo" style="display: none;" />
+              <span id="footerCompanyText" class="footer-company-text">Crafted with love by Minto Wedding</span>
+            </div>
+
+            <!-- Discreet link for private editing -->
+            <div style="margin-top: 25px;">
+              <a href="/admin" class="admin-secret-link" title="केवल आयोजक एवं एडमिन के लिए">
+                ⚙️ एडिटर / एडमिन पैनल
+              </a>
+            </div>
+          </div>
+        </footer>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Interactive Lightbox Modal -->
+  <div id="galleryLightbox">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Close Lightbox">✕</button>
+      <button class="lightbox-prev" id="lightboxPrev" aria-label="Previous Photo">❮</button>
+      <img id="lightboxImg" src="" alt="Gallery Preview" />
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+      <button class="lightbox-next" id="lightboxNext" aria-label="Next Photo">❯</button>
+    </div>
+  </div>
+
+  <!-- JavaScript Application -->
+  <script src="/js/app.js"></script>
+</body>
+</html>
