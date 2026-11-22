@@ -150,14 +150,39 @@
   },
   "gallery": [
     {
-      "url": "/uploads/bride.jpg",
-      "caption": "सौ. का. चन्द्रकिरण - वधू",
-      "category": "bride"
+      "url": "/uploads/gallery/gallery_7_couple_portrait.jpg",
+      "caption": "चि. चन्द्रशेखर संग सौ. का. चन्द्रकिरण — दो रूहों का पावन मिलन",
+      "category": "couple"
     },
     {
-      "url": "/uploads/groom.jpg",
-      "caption": "चि. चन्द्रशेखर - वर",
-      "category": "groom"
+      "url": "/uploads/gallery/gallery_1_mithai.jpg",
+      "caption": "सगाई एवं रोका — मिठास भरा मांगलिक पल",
+      "category": "ceremony"
+    },
+    {
+      "url": "/uploads/gallery/gallery_2_puja_couple.jpg",
+      "caption": "पावन दीप एवं मंगल कलश पूजन — बड़ों का शुभाशीर्वाद",
+      "category": "ceremony"
+    },
+    {
+      "url": "/uploads/gallery/gallery_3_phone_capture.jpg",
+      "caption": "यादों के झरोखे — कैमरे के लेंस में कैद यादगार लम्हा",
+      "category": "candid"
+    },
+    {
+      "url": "/uploads/gallery/gallery_4_couple_smile.jpg",
+      "caption": "स्नेह, आत्मीयता और नव जीवन की मंगल शुरुआत",
+      "category": "couple"
+    },
+    {
+      "url": "/uploads/gallery/gallery_5_family_group.jpg",
+      "caption": "समस्त वरिष्ठ स्वजनों एवं परिवार का पावन शुभाशीर्वाद",
+      "category": "family"
+    },
+    {
+      "url": "/uploads/gallery/gallery_6_celebration.jpg",
+      "caption": "खुशियों, हंसी और उल्लास से सराबोर पारिवारिक पल",
+      "category": "family"
     }
   ],
   "rsvp": {

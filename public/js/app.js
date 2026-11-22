@@ -541,35 +541,34 @@ function initDeckStackingEngine() {
 
       if (nextCard) {
         const nextRect = nextCard.getBoundingClientRect();
-        const transitionRange = Math.min(windowH * 0.75, 450);
+        const transitionRange = Math.min(windowH * 0.3, 160);
         const distanceToSticky = nextRect.top - stickyTop;
 
         if (distanceToSticky <= transitionRange && distanceToSticky >= 0) {
-          // Progress from 0 (just entering) to 1 (fully docked at stickyTop)
+          // Gentle tuck when next card is closely approaching stickyTop
           const overlap = 1 - (distanceToSticky / transitionRange);
-          const scale = 1 - (overlap * 0.08); // scales down from 1 to 0.92
-          const brightness = 1 - (overlap * 0.38); // dims from 1 to 0.62
-          const translateY = -(overlap * 14); // tucks up 14px
+          const scale = 1 - (overlap * 0.05); // slight tuck scale
+          const brightness = 1 - (overlap * 0.15); // gentle dimming
+          const translateY = -(overlap * 10);
 
           card.style.transform = `translate3d(0, ${translateY}px, 0) scale(${scale})`;
           card.style.filter = `brightness(${brightness})`;
           card.classList.remove('is-active-top');
-          card.classList.toggle('is-stacked', overlap > 0.6);
+          card.classList.toggle('is-stacked', overlap > 0.8);
         } else if (distanceToSticky < 0) {
-          // Next card has completely passed stickyTop - this card is fully stacked underneath!
+          // Next card has completely covered stickyTop - this card is stacked underneath
           const deeperCardsAbove = deckCards.slice(i + 1).filter(c => c.getBoundingClientRect().top <= stickyTop + 10).length;
-          const extraScale = Math.min(0.06, deeperCardsAbove * 0.02);
-          const extraDim = Math.min(0.2, deeperCardsAbove * 0.08);
-          const finalScale = Math.max(0.84, 0.92 - extraScale);
-          const finalBrightness = Math.max(0.45, 0.62 - extraDim);
-          const finalY = -14 - (deeperCardsAbove * 6);
+          const extraScale = Math.min(0.04, deeperCardsAbove * 0.015);
+          const finalScale = Math.max(0.90, 0.95 - extraScale);
+          const finalBrightness = Math.max(0.75, 0.85 - (deeperCardsAbove * 0.04));
+          const finalY = -10 - (deeperCardsAbove * 4);
 
           card.style.transform = `translate3d(0, ${finalY}px, 0) scale(${finalScale})`;
           card.style.filter = `brightness(${finalBrightness})`;
           card.classList.add('is-stacked');
           card.classList.remove('is-active-top');
         } else {
-          // Next card hasn't started overlapping yet
+          // Next card hasn't started overlapping yet - full brightness and crispness!
           card.style.transform = 'translate3d(0, 0, 0) scale(1)';
           card.style.filter = 'brightness(1)';
           card.classList.remove('is-stacked');
@@ -777,7 +776,7 @@ function renderGallery(galleryList) {
 
   galleryList.forEach((item, index) => {
     const div = document.createElement('div');
-    div.className = 'gallery-item';
+    div.className = 'gallery-item in-view';
     div.innerHTML = `
       <img src="${item.url}" alt="${item.caption}" loading="lazy" />
       <div class="gallery-overlay">🔍</div>
