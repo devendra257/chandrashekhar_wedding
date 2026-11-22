@@ -928,11 +928,19 @@ body {
   margin-bottom: 50px;
   box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.2), 0 20px 50px rgba(39, 6, 11, 0.45);
   border: 1px solid rgba(212, 175, 55, 0.45);
-  overflow: hidden;
+  max-height: calc(100dvh - 85px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   transform-origin: top center;
   transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.45s ease, opacity 0.45s ease, box-shadow 0.45s ease;
   will-change: transform, filter;
   background: var(--ivory-card);
+}
+
+.royal-deck-card::-webkit-scrollbar {
+  display: none;
 }
 
 /* Light sheen reflection sweeping across active card */
@@ -1402,103 +1410,122 @@ body {
 
 
 /* ==========================================================================
-   6. OUR STORY (हमारी दास्तान) — APPLE-STYLE SCROLL REVEAL
+   6. OUR STORY (हमारी दास्तान) — LUXURY CARD & COMPACT RESPONSIVE TIMELINE
    ========================================================================== */
-.story-section {
-  padding: 45px 20px 40px;
-  background: radial-gradient(circle at center, rgba(212, 175, 55, 0.08) 0%, transparent 80%);
-  position: relative;
-  overflow: hidden;
+.story-card-deck .deck-card-inner {
+  padding: 16px 14px 18px;
+}
+
+.story-card-deck .section-header {
+  margin-bottom: 4px;
+}
+
+.story-card-deck .section-badge {
+  font-size: 0.74rem;
+  padding: 2px 10px;
+}
+
+.story-card-deck .section-title {
+  font-size: 1.55rem;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.story-card-deck .ornate-divider {
+  margin: 4px auto;
 }
 
 .story-timeline {
   position: relative;
   max-width: 480px;
-  margin: 35px auto 0;
-  padding-left: 32px;
+  margin: 10px auto 0;
+  padding-left: 24px;
 }
 
 .story-timeline::before {
   content: '';
   position: absolute;
   top: 10px;
-  bottom: 20px;
-  left: 12px;
+  bottom: 12px;
+  left: 8px;
   width: 2px;
   background: linear-gradient(to bottom, var(--gold-main), rgba(212, 175, 55, 0.2));
 }
 
 .story-node {
   position: relative;
-  margin-bottom: 35px;
+  margin-bottom: 9px;
   perspective: 1000px;
+}
+
+.story-node:last-child {
+  margin-bottom: 0;
 }
 
 .story-marker {
   position: absolute;
-  left: -32px;
-  top: 16px;
-  width: 22px;
-  height: 22px;
+  left: -24px;
+  top: 10px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
-  background: var(--ivory-card);
-  border: 3px solid var(--gold-main);
-  box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-  transition: all 0.5s ease;
+  background: var(--gold-main);
+  border: 2px solid var(--ivory-card);
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+  transition: all 0.4s ease;
   z-index: 5;
 }
 
 .story-node.in-view .story-marker {
-  background: var(--gold-main);
-  transform: scale(1.25);
-  box-shadow: 0 0 18px rgba(212, 175, 55, 0.9);
+  transform: scale(1.15);
+  box-shadow: 0 0 14px rgba(212, 175, 55, 0.9);
 }
 
 .story-card {
   background: var(--ivory-card);
-  border-radius: 16px;
-  padding: 22px 22px;
+  border-radius: 12px;
+  padding: 10px 13px;
   border: 1px solid rgba(212, 175, 55, 0.35);
-  box-shadow: var(--shadow-royal);
-  transform: translateY(40px) scale(0.94);
-  opacity: 0.15;
-  filter: blur(2px);
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease, filter 0.6s ease, box-shadow 0.6s ease;
-  will-change: transform, opacity;
+  box-shadow: 0 4px 15px rgba(39, 6, 11, 0.08), 0 0 10px rgba(212, 175, 55, 0.12);
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0) scale(1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  will-change: transform, box-shadow;
 }
 
 .story-node.in-view .story-card {
-  transform: translateY(0) scale(1);
-  opacity: 1;
-  filter: blur(0);
-  box-shadow: 0 15px 35px rgba(39, 6, 11, 0.12), 0 0 20px rgba(212, 175, 55, 0.2);
+  box-shadow: 0 6px 20px rgba(39, 6, 11, 0.1), 0 0 12px rgba(212, 175, 55, 0.22);
+  border-color: rgba(212, 175, 55, 0.55);
 }
 
 .story-year {
   display: inline-block;
-  font-size: 0.82rem;
+  font-size: 0.72rem;
   color: var(--burgundy);
   font-family: var(--font-serif);
   font-weight: 700;
-  letter-spacing: 1px;
-  background: rgba(212, 175, 55, 0.2);
-  padding: 3px 10px;
-  border-radius: 20px;
+  letter-spacing: 0.5px;
+  background: rgba(212, 175, 55, 0.18);
+  padding: 2px 7px;
+  border-radius: 12px;
   border: 1px solid rgba(212, 175, 55, 0.4);
 }
 
 .story-title {
   font-family: var(--font-heading);
-  font-size: 1.35rem;
+  font-size: 1.02rem;
   color: var(--burgundy);
-  margin: 8px 0 10px;
-  line-height: 1.3;
+  margin: 3px 0 2px;
+  line-height: 1.25;
+  font-weight: 700;
 }
 
 .story-text {
-  font-size: 0.92rem;
+  font-size: 0.81rem;
   color: var(--text-muted);
-  line-height: 1.65;
+  line-height: 1.38;
+  margin: 0;
 }
 
 /* ==========================================================================
@@ -1973,12 +2000,6 @@ body {
 /* Native CSS Scroll-Driven Animations (Modern Browsers Progressive Enhancement) */
 @supports ((animation-timeline: view()) and (animation-range: entry)) {
   @media (prefers-reduced-motion: no-preference) {
-    .story-card {
-      animation: appleScrollFadeIn auto linear both;
-      animation-timeline: view();
-      animation-range: entry 15% cover 35%;
-    }
-
     #groomFamilyCard {
       animation: appleScrollSlideLeft auto linear both;
       animation-timeline: view();
