@@ -458,7 +458,8 @@ function setupEventsJourney(events) {
 
     const isPartyDay = (index === 3 || ev.theme === 'reception' || ev.id === 'event_4');
     const destQuery = encodeURIComponent(`${ev.venue}, ${ev.address}`);
-    const dirUrl = ev.directionUrl || `https://www.google.com/maps/dir/?api=1&destination=${destQuery}`;
+    const dirUrl = ev.directionUrl || (isPartyDay ? 'https://www.google.com/maps/dir/?api=1&destination=20.8298063,81.7150412' : `https://www.google.com/maps/dir/?api=1&destination=${destQuery}`);
+    const embedSrc = ev.embedMapUrl || (isPartyDay ? 'https://www.openstreetmap.org/export/embed.html?bbox=81.710%2C20.825%2C81.720%2C20.835&amp;layer=mapnik&amp;marker=20.8298%2C81.7150' : '');
 
     const locationMapHtml = isPartyDay ? `
         <div class="venue-location-map-box">
@@ -470,14 +471,14 @@ function setupEventsJourney(events) {
           </div>
           <div class="venue-map-frame-wrapper">
             <iframe 
-              src="https://www.openstreetmap.org/export/embed.html?bbox=81.695%2C20.845%2C81.725%2C20.875&amp;layer=mapnik&amp;marker=20.8594%2C81.7100" 
+              src="${embedSrc}" 
               title="विवाह स्थल लोकेशन मैप - ईदगाह मैदान कुरुद"
               loading="lazy" 
               allowfullscreen>
             </iframe>
             <div class="venue-map-tag">
-              <span>🏛️ ईदगाह भवन / मैदान, कुरुद (धमतरी)</span>
-              <a href="${dirUrl}" target="_blank" rel="noopener noreferrer" style="color: #6EE7B7; font-weight: 700; text-decoration: underline;">दिशा-निर्देश लें ↗</a>
+              <span>🏛️ ईदगाह मैदान, कुरुद (धमतरी)</span>
+              <a href="${ev.mapUrl || dirUrl}" target="_blank" rel="noopener noreferrer" style="color: #6EE7B7; font-weight: 700; text-decoration: underline;">दिशा-निर्देश लें ↗</a>
             </div>
           </div>
         </div>
