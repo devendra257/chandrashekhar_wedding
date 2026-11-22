@@ -9,10 +9,10 @@
     "closingTagline": "आपका इंतज़ार रहेगा",
     "musicUrl": "/audio/shehnai_melody.wav",
     "company": {
-      "name": "Rakesh Bais Photography",
-      "logoUrl": "",
-      "showLogo": false,
-      "tagline": "Photography by Rakesh Bais (9131464718)"
+      "name": "Shree Creator",
+      "logoUrl": "/uploads/shree_creator_logo.png",
+      "showLogo": true,
+      "tagline": "Crafted with love by Shree Creator"
     }
   },
   "couple": {
@@ -23,7 +23,7 @@
       "photo": "/uploads/bride.jpg",
       "bio": "सुपौत्री - स्व. श्री दयाराम साहू | सुपुत्री - श्री चेतनदास साहू, दुर्ग (छत्तीसगढ़)",
       "positionX": 50,
-      "positionY": 35,
+      "positionY": 28,
       "zoom": 100
     },
     "groom": {
@@ -33,7 +33,7 @@
       "photo": "/uploads/groom.jpg",
       "bio": "सुपौत्र - स्व. श्री भागीरथी साहू | सुपुत्र - स्व. श्री डीघू राम साहू | माता - श्रीमती सीता साहू (पेमीन), कुरुद (धमतरी)",
       "positionX": 50,
-      "positionY": 30,
+      "positionY": 25,
       "zoom": 100
     }
   },
