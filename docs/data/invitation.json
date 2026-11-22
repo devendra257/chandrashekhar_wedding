@@ -1,0 +1,205 @@
+{
+  "general": {
+    "welcomeShlok": "|| श्री गणेशाय नमः ||",
+    "invitationHeading": "साहू परिवार का सस्नेह आमंत्रण",
+    "invitationSubheading": "चन्द्रशेखर संग चन्द्रकिरण",
+    "welcomeMessage": "परमपिता परमेश्वर की असीम अनुकंपा एवं पूज्य पितरों के पावन आशीर्वाद से हमारे प्रिय वर एवं वधू के शुभ विवाह के इस मांगलिक अवसर पर आप सपरिवार सादर आमंत्रित हैं।",
+    "closingMessage": "आपकी गरिमामयी उपस्थिति हमारे इस मांगलिक उत्सव को और भी आनंदमय बनाएगी।",
+    "closingBlessing": "स्नेह, आशीर्वाद और खुशियों के इस उत्सव में...",
+    "closingTagline": "आपका इंतज़ार रहेगा",
+    "musicUrl": "/audio/shehnai_melody.wav",
+    "company": {
+      "name": "Shree Creator",
+      "logoUrl": "/uploads/shree_creator_logo.png",
+      "showLogo": true,
+      "tagline": "Crafted with love by Shree Creator",
+      "phone": "8770024607"
+    }
+  },
+  "couple": {
+    "bride": {
+      "name": "सौ. का. चन्द्रकिरण",
+      "nameEn": "Chandrakiran",
+      "title": "सुपुत्री (दुर्ग, छ. ग.)",
+      "photo": "/uploads/bride.jpg",
+      "bio": "सुपौत्री - स्व. श्री दयाराम साहू | सुपुत्री - श्रीमती फूलकुंवर साहू एवं श्री चेतनदास साहू, दुर्ग (छत्तीसगढ़)",
+      "positionX": 50,
+      "positionY": 28,
+      "zoom": 100
+    },
+    "groom": {
+      "name": "चि. चन्द्रशेखर",
+      "nameEn": "Chandrashekhar",
+      "title": "सुपुत्र (कुरुद, धमतरी)",
+      "photo": "/uploads/groom.jpg",
+      "bio": "सुपौत्र - स्व. श्री भागीरथी साहू | सुपुत्र - स्व. श्री डीघू राम साहू | माता - श्रीमती सीता साहू (पेमीन), कुरुद (धमतरी)",
+      "positionX": 50,
+      "positionY": 25,
+      "zoom": 100
+    }
+  },
+  "countdown": {
+    "targetDate": "2026-11-30T17:30:00+05:30",
+    "eventTitle": "शुभ विवाह मुहूर्त (पाणिग्रहण / सात फेरे)",
+    "isDemoTime": false,
+    "demoTimeNote": "शुभ विवाह मुहूर्त (पाणिग्रहण / सात फेरे): 30 नवम्बर 2026 (गोधुली बेला)"
+  },
+  "events": [
+    {
+      "id": "event_1",
+      "name": "सगाई",
+      "nameEn": "Engagement Ceremony",
+      "tagline": "सपनों का नया संसार, अंगूठी से बंधा प्यार",
+      "date": "28 November 2026",
+      "dayHindi": "शनिवार",
+      "time": "प्रातः 10:00 बजे से",
+      "isDemoTime": false,
+      "venue": "निज निवास (कुरुद)",
+      "address": "कुरुद, जिला धमतरी (छत्तीसगढ़)",
+      "mapUrl": "https://maps.google.com/?q=Kurud+Dhamtari+Chhattisgarh",
+      "theme": "engagement",
+      "accentColor": "#C59B27",
+      "description": "दो दिलों का पावन बंधन एवं अंगूठी का मांगलिक आदान-प्रदान।"
+    },
+    {
+      "id": "event_2",
+      "name": "मण्डपाच्छादन, चुलमाटी, तेल (मायन)",
+      "nameEn": "Mandap & Tel (Mayan)",
+      "tagline": "कृष्ण पक्ष 06 — शगुन का तेल व हल्दी की पावन रस्म",
+      "date": "29 November 2026",
+      "dayHindi": "रविवार",
+      "time": "प्रातः 10:00 बजे से",
+      "isDemoTime": false,
+      "venue": "निज निवास, कुरुद",
+      "address": "कुरुद, जिला धमतरी (छत्तीसगढ़)",
+      "mapUrl": "https://maps.google.com/?q=Kurud+Dhamtari+Chhattisgarh",
+      "theme": "haldi",
+      "accentColor": "#E5A910",
+      "description": "शगुन की चुलमाटी, मण्डपाच्छादन एवं तेल (मायन) की पवित्र वैदिक रस्में।"
+    },
+    {
+      "id": "event_3",
+      "name": "बारात प्रस्थान (पाणिग्रहण)",
+      "nameEn": "Baraat & Panigrahan",
+      "tagline": "विवाह मुहूर्त: गोधुली बेला में | कृष्ण पक्ष 07",
+      "date": "30 November 2026",
+      "dayHindi": "सोमवार",
+      "time": "बारात प्रातः 09:00 बजे कुरुद से ग्राम-कोनारी जिला दुर्ग प्रस्थान | विवाह: गोधुली बेला",
+      "isDemoTime": false,
+      "venue": "ग्राम-कोनारी, जिला दुर्ग",
+      "address": "ग्राम-कोनारी, जिला दुर्ग (छत्तीसगढ़)",
+      "mapUrl": "https://maps.google.com/?q=Konari+Durg+Chhattisgarh",
+      "theme": "baraat",
+      "accentColor": "#B82E38",
+      "description": "बारात प्रातः 09 बजे कुरुद से ग्राम-कोनारी जिला दुर्ग के लिए प्रस्थान करेगी। शुभ विवाह मुहूर्त गोधुली बेला में संपन्न होगा।"
+    },
+    {
+      "id": "event_4",
+      "name": "आशीर्वाद समारोह एवं स्वरुचि भोज",
+      "nameEn": "Aashirwad Samaroh & Banquet",
+      "tagline": "विवाहस्थळ: ईदगाह भवन (कुरुद) | नव-दंपति को शुभाशीर्वाद",
+      "date": "1 December 2026",
+      "dayHindi": "मंगलवार",
+      "time": "दोपहर 12:00 बजे से सायं तक",
+      "isDemoTime": false,
+      "venue": "ईदगाह भवन / ईदगाह मैदान, (कुरुद)",
+      "address": "ईदगाह मैदान, कुरुद, जिला धमतरी (छत्तीसगढ़)",
+      "mapUrl": "https://maps.google.com/?q=Idgah+Bhavan+Kurud+Dhamtari",
+      "theme": "reception",
+      "accentColor": "#8C1D40",
+      "description": "विवाह उपरांत नव-दंपति के स्वागत में प्रीतिभोज (स्वरुचि भोज) एवं आशीर्वाद समारोह।"
+    }
+  ],
+  "story": [
+    {
+      "chapter": "First time (प्रथम मुलाकात)",
+      "year": "14.06.2026",
+      "title": "पहली मुलाकात — दुर्ग (वधू गृह)",
+      "description": "वर पक्ष प्रथम बार वधू को देखने उनके निवास (दुर्ग) पहुंचे। सादगी, संस्कार और पहली ही भेंट में दो परिवारों के बीच स्नेह व विश्वास का पावन अंकुर फूटा।"
+    },
+    {
+      "chapter": "Second Meeting (कुरुद आगमन का निमंत्रण)",
+      "year": "21.06.2026",
+      "title": "द्वितीय मुलाकात — कुरुद आगमन का स्नेह निमंत्रण",
+      "description": "वर पक्ष द्वारा पुनः वधू गृह पहुंचकर आत्मीय बातचीत आगे बढ़ाई गई और वधू परिवार को कुरुद (वर गृह) पधारने हेतु सादर आमंत्रित किया गया।"
+    },
+    {
+      "chapter": "Final Fix (शुभ रिश्ता तय)",
+      "year": "28.06.2026",
+      "title": "कुरुद आगमन एवं अंतिम सहमति (Final Fix)",
+      "description": "वधू परिवार कुरुद स्थित वर गृह पधारे। परस्पर आदर, स्नेह और बड़ों के पावन शुभाशीर्वाद से चि. चन्द्रशेखर एवं सौ. का. चन्द्रकिरण का यह शुभ विवाह रिश्ता अंतिम रूप से तय हुआ।"
+    }
+  ],
+  "families": {
+    "groom": {
+      "side": "वर पक्ष (कुरुद, धमतरी)",
+      "father": "स्व. श्री डीघू राम साहू",
+      "mother": "श्रीमती सीता साहू (पेमीन)",
+      "grandFather": "स्व. श्री भागीरथी साहू",
+      "address": "कुरुद (धमतरी), छत्तीसगढ़",
+      "quote": "हमारे कुलदीपक चि. चन्द्रशेखर के जीवन के इस नए अध्याय में आपका स्नेह व आशीर्वाद प्रार्थनीय है।"
+    },
+    "bride": {
+      "side": "वधू पक्ष (दुर्ग)",
+      "father": "श्री चेतनदास साहू",
+      "mother": "श्रीमती फूलकुंवर साहू",
+      "grandFather": "स्व. श्री दयाराम साहू",
+      "address": "ग्राम-कोनारी, जिला दुर्ग (छ. ग.)",
+      "quote": "हमारी लाडली सौ. का. चन्द्रकिरण के पावन पाणिग्रहण संस्कार में आपकी गरिमामयी उपस्थिति सादर प्रार्थनीय है।"
+    }
+  },
+  "gallery": [
+    {
+      "url": "/uploads/gallery/gallery_7_couple_portrait.jpg",
+      "caption": "चि. चन्द्रशेखर संग सौ. का. चन्द्रकिरण — दो रूहों का पावन मिलन",
+      "category": "couple"
+    },
+    {
+      "url": "/uploads/gallery/gallery_1_mithai.jpg",
+      "caption": "सगाई एवं रोका — मिठास भरा मांगलिक पल",
+      "category": "ceremony"
+    },
+    {
+      "url": "/uploads/gallery/gallery_2_puja_couple.jpg",
+      "caption": "पावन दीप एवं मंगल कलश पूजन — बड़ों का शुभाशीर्वाद",
+      "category": "ceremony"
+    },
+    {
+      "url": "/uploads/gallery/gallery_3_phone_capture.jpg",
+      "caption": "यादों के झरोखे — कैमरे के लेंस में कैद यादगार लम्हा",
+      "category": "candid"
+    },
+    {
+      "url": "/uploads/gallery/gallery_4_couple_smile.jpg",
+      "caption": "स्नेह, आत्मीयता और नव जीवन की मंगल शुरुआत",
+      "category": "couple"
+    },
+    {
+      "url": "/uploads/gallery/gallery_5_family_group.jpg",
+      "caption": "समस्त वरिष्ठ स्वजनों एवं परिवार का पावन शुभाशीर्वाद",
+      "category": "family"
+    },
+    {
+      "url": "/uploads/gallery/gallery_6_celebration.jpg",
+      "caption": "खुशियों, हंसी और उल्लास से सराबोर पारिवारिक पल",
+      "category": "family"
+    }
+  ],
+  "rsvp": {
+    "phone": "+91 9131464718",
+    "whatsappNumber": "919131464718",
+    "defaultMessage": "नमस्ते! हम चि. चन्द्रशेखर संग सौ. का. चन्द्रकिरण के शुभ विवाह समारोह में अवश्य उपस्थित होंगे। नव-दंपति को हमारा हार्दिक आशीर्वाद!",
+    "contacts": [
+      {
+        "name": "श्रीमती सीता साहू (पेमीन)",
+        "relation": "वर की माता (कुरुद)",
+        "phone": "+91 91314 64718"
+      },
+      {
+        "name": "श्री चेतनदास साहू",
+        "relation": "वधू के पिता (दुर्ग)",
+        "phone": "+91 91314 64718"
+      }
+    ]
+  }
+}

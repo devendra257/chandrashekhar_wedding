@@ -1,6 +1,13 @@
 # 💍 साहू परिवार का सस्नेह आमंत्रण — चन्द्रशेखर संग चन्द्रकिरण
 
-> **चि. चन्द्रशेखर (कुरुद, धमतरी)** संग **सौ. का. चन्द्रकिरण (ग्राम-कोनारी, दुर्ग)** का शुभ विवाह निमंत्रण पत्र।
+> **चि. चन्द्रशेखर (कुरुद, धमतरी)** संग **सौ. का. चन्द्रकिरण (ग्राम-कोनारी, दुर्ग)** का शुभ विवाह डिजिटल निमंत्रण पत्र।
+
+---
+
+## 🌐 लाइव वेबसाइट (Live GitHub Pages URL)
+
+- **👰🤵 लाइव वेडिंग इनविटेशन:** [https://devendra257.github.io/chandrashekhar_wedding/](https://devendra257.github.io/chandrashekhar_wedding/)
+- **🐙 GitHub Repository:** [https://github.com/devendra257/chandrashekhar_wedding](https://github.com/devendra257/chandrashekhar_wedding)
 
 ---
 

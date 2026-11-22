@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>चि. चन्द्रशेखर संग सौ. का. चन्द्रकिरण | शुभ विवाह निमंत्रण</title>
+  <meta name="description" content="चि. चन्द्रशेखर संग सौ. का. चन्द्रकिरण के शुभ विवाह का पावन डिजिटल निमंत्रण पत्र। मांगलिक परिणयोत्सव: 29 नवम्बर से 1 दिसम्बर 2026।" />
+
+  <!-- Favicon & Touch Icon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>" />
+
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body class="damask-pattern">
+
+  <!-- Floating Audio & Reduced Motion Controls -->
+  <div class="floating-controls">
+    <button id="motionToggleBtn" class="ctrl-btn" title="कम एनिमेशन (Reduced Motion)" aria-label="Toggle Reduced Motion">
+      <span>⚡</span>
+    </button>
+    <button id="audioToggleBtn" class="ctrl-btn sound-muted" title="संगीत शुरू करें" aria-label="Toggle Wedding Music">
+      <div class="audio-wave">
+        <span></span><span></span><span></span><span></span>
+      </div>
+    </button>
+  </div>
+
+  <!-- Background Falling Petals Canvas -->
+  <canvas id="petalCanvas"></canvas>
+
+  <!-- ==========================================================================
+       1. CINEMATIC 3D WAX-SEALED ENVELOPE OPENING EXPERIENCE
+       ========================================================================== -->
+  <div id="envelopeExperience">
+    <div class="envelope-wrapper">
+      
+      <!-- Divine Golden Glowing & Growing Aura -->
+      <div class="envelope-gold-aura" id="envelopeGoldAura">
+        <div class="gold-aura-glow"></div>
+        <div class="gold-aura-rays"></div>
+        <div class="gold-aura-shockwave"></div>
+        <div class="gold-aura-ring ring-1"></div>
+        <div class="gold-aura-ring ring-2"></div>
+      </div>
+
+      <div class="envelope-stage">
+        
+        <!-- The Envelope Container -->
+        <div class="envelope">
+          <!-- Inner Golden Radiance when opened -->
+          <div class="envelope-inner-radiance"></div>
+
+          <!-- Embossed Corner Flourishes -->
+          <svg class="corner-flourish corner-tl" viewBox="0 0 100 100">
+            <path d="M10,10 Q50,10 50,50 Q10,50 10,10 M10,10 L90,10 L90,20 L20,20 L20,90 L10,90 Z" fill="#D4AF37" />
+          </svg>
+          <svg class="corner-flourish corner-tr" viewBox="0 0 100 100">
+            <path d="M10,10 Q50,10 50,50 Q10,50 10,10 M10,10 L90,10 L90,20 L20,20 L20,90 L10,90 Z" fill="#D4AF37" />
+          </svg>
+          <svg class="corner-flourish corner-bl" viewBox="0 0 100 100">
+            <path d="M10,10 Q50,10 50,50 Q10,50 10,10 M10,10 L90,10 L90,20 L20,20 L20,90 L10,90 Z" fill="#D4AF37" />
+          </svg>
+          <svg class="corner-flourish corner-br" viewBox="0 0 100 100">
+            <path d="M10,10 Q50,10 50,50 Q10,50 10,10 M10,10 L90,10 L90,20 L20,20 L20,90 L10,90 Z" fill="#D4AF37" />
+          </svg>
+
+          <!-- Inside Rising Invitation Card Peek with Golden Shimmer Sweep -->
+          <div class="invitation-card-peek">
+            <div class="card-gold-shimmer-sweep"></div>
+            <div style="font-family: var(--font-devanagari); color: var(--burgundy); font-size: 1rem; font-weight: 700; margin-bottom: 4px; position: relative; z-index: 2;">
+              || श्री गणेशाय नमः ||
+            </div>
+            <div style="font-family: var(--font-heading); color: var(--gold-main); font-size: 1.3rem; letter-spacing: 1px; position: relative; z-index: 2;">
+              मांगलिक परिणयोत्सव
+            </div>
+            <div class="ornate-divider" style="margin: 8px auto; position: relative; z-index: 2;">
+              <span class="ornate-symbol">❦</span>
+            </div>
+            <div style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--burgundy-rich); margin-top: 5px; position: relative; z-index: 2;">
+              <span id="envelopeGroomName">चि. चन्द्रशेखर</span> 
+              <span style="font-family: var(--font-script); color: var(--gold-main); font-size: 1.8rem; margin: 0 4px;">संग</span> 
+              <span id="envelopeBrideName">सौ. का. चन्द्रकिरण</span>
+            </div>
+            <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 6px; letter-spacing: 0.5px; position: relative; z-index: 2;">
+              29 नवम्बर — 1 दिसम्बर 2026
+            </div>
+          </div>
+
+          <!-- 3D Folding Top Flap -->
+          <div class="envelope-flap-top"></div>
+
+          <!-- Glowing Authentic Wax Seal -->
+          <div class="wax-seal-container" id="waxSeal">
+            <div class="wax-seal">
+              <div class="seal-ring"></div>
+              <div class="wax-seal-symbol">
+                शुभ<br />विवाह
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Action Button -->
+      <button class="open-invitation-btn" id="openInvitationBtn">
+        <span>💌</span>
+        <span>निमंत्रण खोलें</span>
+      </button>
+
+      <p style="color: #DFC8A8; font-size: 0.8rem; margin-top: 14px; text-align: center; letter-spacing: 0.5px;">
+        ✨ खोलने के लिए मुहर या बटन पर स्पर्श करें
+      </p>
+
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       2. MAIN LUXURY WEDDING INVITATION WEBSITE
+       ========================================================================== -->
+  <main id="invitationMain">
+    <div class="royal-container">
+
+      <!-- Header & Auspicious Inscription -->
+      <header class="header-sacred">
+        <div class="sacred-shlok" id="sacredShlok">|| श्री गणेशाय नमः ||</div>
+        <h1 class="main-title gold-gradient-text" id="mainTitle">साहू परिवार का सस्नेह आमंत्रण</h1>
+        <p class="sub-title" id="subTitle">चन्द्रशेखर संग चन्द्रकिरण</p>
+        <div class="ornate-divider">
+          <span class="ornate-symbol">❧ ❦ ☙</span>
+        </div>
+      </header>
+
+      <!-- Couple Portraits Reveal (Bride & Groom) -->
+      <section class="couple-reveal-section">
+        <div class="couple-portraits-wrapper">
+          
+          <!-- Bride Portrait Card -->
+          <div class="portrait-card bride-card">
+            <div class="portrait-frame">
+              <img id="bridePhotoImg" src="./uploads/bride.jpg" alt="वधू की तस्वीर" />
+              <div class="portrait-badge">
+                <div class="portrait-name" id="brideName">सौ. का. चन्द्रकिरण</div>
+                <div class="portrait-title" id="brideTitle">सुपुत्री (दुर्ग)</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Center Wedding Knot Ornament -->
+          <div class="couple-union-knot" title="पावन परिणय">
+            <span>&</span>
+          </div>
+
+          <!-- Groom Portrait Card -->
+          <div class="portrait-card groom-card">
+            <div class="portrait-frame">
+              <img id="groomPhotoImg" src="./uploads/groom.jpg" alt="वर की तस्वीर" />
+              <div class="portrait-badge">
+                <div class="portrait-name" id="groomName">चि. चन्द्रशेखर</div>
+                <div class="portrait-title" id="groomTitle">सुपुत्र (कुरुद, धमतरी)</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Welcome Message Box -->
+        <div class="welcome-quote-box">
+          <p id="welcomeMessageText">
+            परमपिता परमेश्वर की असीम अनुकंपा से, हमारे प्रिय वर एवं वधू के शुभ विवाह के इस पावन अवसर पर आप सपरिवार सादर आमंत्रित हैं।
+          </p>
+        </div>
+      </section>
+
+      <!-- Live Wedding Countdown Timer -->
+      <section class="countdown-section">
+        <h3 class="countdown-title">शुभ घड़ी की प्रतीक्षा</h3>
+        <div class="countdown-badge" id="countdownBadge">
+          शुभ विवाह मुहूर्त (पाणिग्रहण / सात फेरे): 30 नवम्बर 2026 (गोधुली बेला)
+        </div>
+
+        <div class="countdown-grid">
+          <div class="countdown-box">
+            <div class="countdown-num" id="countDays">00</div>
+            <div class="countdown-label">दिन</div>
+          </div>
+          <div class="countdown-box">
+            <div class="countdown-num" id="countHours">00</div>
+            <div class="countdown-label">घंटे</div>
+          </div>
+          <div class="countdown-box">
+            <div class="countdown-num" id="countMinutes">00</div>
+            <div class="countdown-label">मिनट</div>
+          </div>
+          <div class="countdown-box">
+            <div class="countdown-num" id="countSeconds">00</div>
+            <div class="countdown-label">सेकंड</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sticky Deck Quick Navigator Bar -->
+      <nav class="events-sticky-nav" id="royalDeckNav" aria-label="Deck Navigation">
+        <!-- Dynamically populated: 💍 सगाई | 🌼 हल्दी | 🥁 बारात | ✨ रिसेप्शन | 📖 कहानी | 👨‍👩‍👧‍👦 परिवार | 🖼️ गैलरी | 💌 RSVP -->
+      </nav>
+
+      <!-- ==========================================================================
+           ROYAL STACKED CARD DECK (INSTAGRAM REEL & APPLE-STYLE STACKING SCROLL)
+           Each section is a luxury card in a physical deck that stacks and reveals on scroll.
+           ========================================================================== -->
+      <div class="royal-deck-container" id="royalDeckContainer">
+
+        <!-- 4 EVENTS INJECTED DYNAMICALLY BY APP.JS AS DECK CARDS (सगाई, हल्दी, बारात, रिसेप्शन) -->
+        <div id="deckEventsWrapper"></div>
+
+        <!-- CARD 5: हमारी दास्तान (OUR STORY) -->
+        <section class="royal-deck-card story-card-deck" id="deck-story">
+          <div class="deck-card-inner">
+            <div class="section-header in-view">
+              <span class="section-badge">दो रूहों का पावन मिलन</span>
+              <h2 class="section-title gold-gradient-text">हमारी दास्तान</h2>
+              <div class="ornate-divider"><span class="ornate-symbol">❧</span></div>
+            </div>
+            <div class="story-timeline" id="storyTimeline">
+              <!-- Story items injected dynamically -->
+            </div>
+          </div>
+        </section>
+
+        <!-- CARD 6: परिवार परिचय (FAMILIES) -->
+        <section class="royal-deck-card families-card-deck" id="deck-families">
+          <div class="deck-card-inner">
+            <div class="section-header in-view">
+              <span class="section-badge">संस्कार और स्नेह</span>
+              <h2 class="section-title gold-gradient-text">परिवार परिचय</h2>
+              <div class="ornate-divider"><span class="ornate-symbol">❦</span></div>
+            </div>
+            <div class="family-cards-grid">
+              <div class="family-card in-view" id="groomFamilyCard"></div>
+              <div class="family-card in-view" id="brideFamilyCard"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CARD 7: यादों के झरोखे (PHOTO GALLERY) -->
+        <section class="royal-deck-card gallery-card-deck" id="deck-gallery">
+          <div class="deck-card-inner">
+            <div class="section-header in-view">
+              <span class="section-badge">मधुर स्मृतियां</span>
+              <h2 class="section-title gold-gradient-text">यादों के झरोखे</h2>
+              <div class="ornate-divider"><span class="ornate-symbol">❖</span></div>
+            </div>
+            <div class="gallery-grid" id="galleryGrid">
+              <!-- Gallery photos injected dynamically -->
+            </div>
+          </div>
+        </section>
+
+        <!-- CARD 8: सस्नेह निमंत्रण शेयर करें (SHARE ON WHATSAPP) -->
+        <section class="royal-deck-card rsvp-card-deck" id="deck-rsvp">
+          <div class="deck-card-inner rsvp-box in-view" style="max-width: 100%; border: none; box-shadow: none;">
+            <div style="font-size: 2.6rem; margin-bottom: 8px;">💌</div>
+            <h3 style="font-family: var(--font-heading); font-size: 1.7rem; color: var(--burgundy);">
+              सस्नेह निमंत्रण शेयर करें
+            </h3>
+            <p style="font-size: 0.92rem; color: var(--text-muted); margin-top: 6px; line-height: 1.6; max-width: 440px; margin-left: auto; margin-right: auto;">
+              यह डिजिटल विवाह निमंत्रण पत्र अपने परिवारजनों, मित्रों एवं रिश्तेदारों को व्हाट्सएप पर भेजें ताकि सभी इस मांगलिक उत्सव में शामिल हो सकें।
+            </p>
+
+            <div style="margin-top: 22px; display: flex; flex-direction: column; gap: 12px; align-items: center; width: 100%;">
+              <!-- Direct WhatsApp Share Button (Any visitor can share the invitation URL) -->
+              <button id="whatsappShareBtn" class="btn-whatsapp-share" title="WhatsApp पर शेयर करें">
+                <span class="btn-wa-icon">💬</span>
+                <span>WhatsApp पर निमंत्रण शेयर करें</span>
+              </button>
+
+              <!-- Copy Link & Secondary Share Buttons -->
+              <div style="display: flex; gap: 10px; width: 100%; max-width: 360px; justify-content: center;">
+                <button id="copyInviteLinkBtn" class="btn-copy-invite-link" title="लिंक कॉपी करें">
+                  <span>📋</span> लिंक कॉपी करें
+                </button>
+                <button id="shareInviteBtn" class="share-invite-btn" style="margin: 0; flex: 1;" title="अन्य ऐप्स पर शेयर करें">
+                  <span>📤</span> अन्य ऐप्स
+                </button>
+              </div>
+
+              <!-- Toast notification on copy -->
+              <div id="shareCopyToast" class="share-copy-toast" style="display: none;">
+                ✨ निमंत्रण लिंक कॉपी हो गया! अब आप इसे किसी को भी भेज सकते हैं।
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CARD 9: आपका इंतज़ार रहेगा (GRAND CLOSING CLIMAX) -->
+        <footer class="royal-deck-card closing-card-deck" id="deck-closing">
+          <div class="deck-card-inner closing-scene in-view" style="background: none; padding: 30px 15px;">
+            <p class="closing-blessing" id="closingBlessing">स्नेह, आशीर्वाद और खुशियों के इस उत्सव में...</p>
+            <h2 class="closing-grand-tagline gold-gradient-text" id="closingTagline">आपका इंतज़ार रहेगा</h2>
+            <p style="max-width: 420px; margin: 0 auto; font-size: 0.92rem; color: var(--text-muted);" id="closingMessage">
+              आपकी गरिमामयी उपस्थिति हमारे इस मांगलिक उत्सव को और भी आनंदमय बनाएगी।
+            </p>
+
+            <!-- Company Logo & Contact ONLY in this final scene, small & understated -->
+            <div class="footer-company-wrapper" id="footerCompanyWrapper" style="display: none;">
+              <img id="footerCompanyLogo" class="footer-company-logo" src="" alt="Shree Creator Logo" style="display: none;" />
+              <div class="footer-company-info">
+                <div id="footerCompanyText" class="footer-company-text">Crafted with love by Shree Creator</div>
+                <div class="footer-company-contact">
+                  <a id="footerCompanyPhone" href="tel:8770024607" class="footer-company-phone" title="Shree Creator को कॉल करें">
+                    <span class="phone-icon">📞</span>
+                    <span class="phone-number">8770024607</span>
+                  </a>
+                  <a id="footerCompanyWhatsApp" href="https://wa.me/918770024607?text=%E0%A4%A8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%A4%E0%A5%87%20Shree%20Creator!%20%E0%A4%AE%E0%A5%81%E0%A4%9B%E0%A5%87%20%E0%A4%AD%E0%A5%80%20%E0%A4%A1%E0%A4%BF%E0%A4%9C%E0%A4%BF%E0%A4%9F%E0%A4%B2%20%E0%A4%B5%E0%A5%87%E0%A4%A1%E0%A4%BF%E0%A4%82%E0%A4%97%20%E0%A4%95%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%A1%20%E0%A4%AC%E0%A4%A8%E0%A4%B5%E0%A4%BE%E0%A4%A8%E0%A4%BE%20%E0%A4%B9%E0%A5%88%E0%A4%A4" target="_blank" class="footer-company-wa" title="WhatsApp पर संपर्क करें">
+                    <span>💬</span> WhatsApp
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Interactive Lightbox Modal -->
+  <div id="galleryLightbox">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Close Lightbox">✕</button>
+      <button class="lightbox-prev" id="lightboxPrev" aria-label="Previous Photo">❮</button>
+      <img id="lightboxImg" src="" alt="Gallery Preview" />
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+      <button class="lightbox-next" id="lightboxNext" aria-label="Next Photo">❯</button>
+    </div>
+  </div>
+
+  <!-- Embedded Data & JavaScript Application -->
+  <script src="./data/invitation-data.js"></script>
+  <script src="./js/app.js"></script>
+</body>
+</html>

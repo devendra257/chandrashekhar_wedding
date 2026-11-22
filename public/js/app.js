@@ -19,13 +19,33 @@ const invitationMain = document.getElementById('invitationMain');
 const audioToggleBtn = document.getElementById('audioToggleBtn');
 const motionToggleBtn = document.getElementById('motionToggleBtn');
 
+// Helper to resolve asset URLs across static hosting, GitHub Pages, or local Express server
+function resolveAssetUrl(url) {
+  if (!url) return '';
+  if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:')) return url;
+  if (url.startsWith('/')) {
+    return '.' + url;
+  }
+  return url;
+}
+
 // 1. Fetch Invitation Configuration
 async function loadInvitationData() {
+  if (window.EMBEDDED_INVITATION_DATA) {
+    invitationData = window.EMBEDDED_INVITATION_DATA;
+    renderInvitation(invitationData);
+    setupCountdown(invitationData.countdown);
+    setupEventsJourney(invitationData.events);
+    setupAudio(invitationData.general.musicUrl);
+    return;
+  }
+
   try {
-    const res = await fetch('/api/invitation');
+    const res = await fetch('data/invitation.json').catch(() => fetch('/api/invitation'));
     const json = await res.json();
-    if (json.success && json.data) {
-      invitationData = json.data;
+    const data = json.data || json;
+    if (data) {
+      invitationData = data;
       renderInvitation(invitationData);
       setupCountdown(invitationData.countdown);
       setupEventsJourney(invitationData.events);
@@ -61,13 +81,13 @@ function renderInvitation(data) {
   // Set Couple Photos with position & zoom adjustments
   const brideImg = document.getElementById('bridePhotoImg');
   if (brideImg && bride.photo) {
-    brideImg.src = bride.photo;
+    brideImg.src = resolveAssetUrl(bride.photo);
     applyImageTransforms(brideImg, bride.positionX, bride.positionY, bride.zoom);
   }
 
   const groomImg = document.getElementById('groomPhotoImg');
   if (groomImg && groom.photo) {
-    groomImg.src = groom.photo;
+    groomImg.src = resolveAssetUrl(groom.photo);
     applyImageTransforms(groomImg, groom.positionX, groom.positionY, groom.zoom);
   }
 
@@ -97,7 +117,7 @@ function renderInvitation(data) {
 
   if (company && company.showLogo && company.logoUrl) {
     if (footerLogo) {
-      footerLogo.src = company.logoUrl;
+      footerLogo.src = resolveAssetUrl(company.logoUrl);
       footerLogo.style.display = 'block';
     }
     if (footerText) footerText.textContent = company.tagline || company.name || 'Crafted with love by Shree Creator';
@@ -778,7 +798,7 @@ function renderGallery(galleryList) {
     const div = document.createElement('div');
     div.className = 'gallery-item in-view';
     div.innerHTML = `
-      <img src="${item.url}" alt="${item.caption}" loading="lazy" />
+      <img src="${resolveAssetUrl(item.url)}" alt="${item.caption}" loading="lazy" />
       <div class="gallery-overlay">🔍</div>
     `;
     div.addEventListener('click', () => openLightbox(index));
@@ -794,7 +814,7 @@ function openLightbox(index) {
   const cap = document.getElementById('lightboxCaption');
 
   if (lb && img && cap) {
-    img.src = activeGallery[index].url;
+    img.src = resolveAssetUrl(activeGallery[index].url);
     cap.textContent = activeGallery[index].caption || '';
     lb.classList.add('active');
   }
@@ -928,9 +948,9 @@ function showToast(msg) {
 
 // 12. Audio Control with Mute / Unmute
 function setupAudio(musicUrl) {
-  if (!musicUrl) musicUrl = '/audio/shehnai_melody.wav';
+  if (!musicUrl) musicUrl = './audio/shehnai_melody.wav';
 
-  audioPlayer = new Audio(musicUrl);
+  audioPlayer = new Audio(resolveAssetUrl(musicUrl));
   audioPlayer.loop = true;
   audioPlayer.preload = 'auto';
 
