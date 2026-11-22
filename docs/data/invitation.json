@@ -57,6 +57,7 @@
       "venue": "निज निवास (कुरुद)",
       "address": "कुरुद, जिला धमतरी (छत्तीसगढ़)",
       "mapUrl": "https://maps.google.com/?q=Kurud+Dhamtari+Chhattisgarh",
+      "directionUrl": "https://www.google.com/maps/dir/?api=1&destination=Kurud+Dhamtari+Chhattisgarh",
       "theme": "engagement",
       "accentColor": "#C59B27",
       "description": "दो दिलों का पावन बंधन एवं अंगूठी का मांगलिक आदान-प्रदान।"
@@ -73,6 +74,7 @@
       "venue": "निज निवास, कुरुद",
       "address": "कुरुद, जिला धमतरी (छत्तीसगढ़)",
       "mapUrl": "https://maps.google.com/?q=Kurud+Dhamtari+Chhattisgarh",
+      "directionUrl": "https://www.google.com/maps/dir/?api=1&destination=Kurud+Dhamtari+Chhattisgarh",
       "theme": "haldi",
       "accentColor": "#E5A910",
       "description": "शगुन की चुलमाटी, मण्डपाच्छादन एवं तेल (मायन) की पवित्र वैदिक रस्में।"
@@ -89,6 +91,7 @@
       "venue": "ग्राम-कोनारी, जिला दुर्ग",
       "address": "ग्राम-कोनारी, जिला दुर्ग (छत्तीसगढ़)",
       "mapUrl": "https://maps.google.com/?q=Konari+Durg+Chhattisgarh",
+      "directionUrl": "https://www.google.com/maps/dir/?api=1&destination=Konari+Durg+Chhattisgarh",
       "theme": "baraat",
       "accentColor": "#B82E38",
       "description": "बारात प्रातः 09 बजे कुरुद से ग्राम-कोनारी जिला दुर्ग के लिए प्रस्थान करेगी। शुभ विवाह मुहूर्त गोधुली बेला में संपन्न होगा।"
@@ -105,6 +108,8 @@
       "venue": "ईदगाह भवन / ईदगाह मैदान, (कुरुद)",
       "address": "ईदगाह मैदान, कुरुद, जिला धमतरी (छत्तीसगढ़)",
       "mapUrl": "https://maps.google.com/?q=Idgah+Bhavan+Kurud+Dhamtari",
+      "directionUrl": "https://www.google.com/maps/dir/?api=1&destination=Idgah+Bhavan+Kurud+Dhamtari+Chhattisgarh",
+      "embedMapUrl": "https://www.openstreetmap.org/export/embed.html?bbox=81.695%2C20.845%2C81.725%2C20.875&layer=mapnik&marker=20.8594%2C81.7100",
       "theme": "reception",
       "accentColor": "#8C1D40",
       "description": "विवाह उपरांत नव-दंपति के स्वागत में प्रीतिभोज (स्वरुचि भोज) एवं आशीर्वाद समारोह।"

@@ -418,11 +418,75 @@ function setupEventsJourney(events) {
     const icon = themeIcons[ev.theme] || '🌸';
     const demoBadge = ev.isDemoTime ? `<span class="demo-time-pill" style="font-size: 0.72rem; background: rgba(212,175,55,0.25); color: #FFE29F; padding: 2px 8px; border-radius: 12px; margin-left: 6px; border: 1px solid rgba(212,175,55,0.4);">डेमो</span>` : '';
 
+    const pillNames = {
+      event_1: 'सगाई',
+      event_2: 'हल्दी/मायन',
+      event_3: 'बारात',
+      event_4: 'भोज/लोकेशन'
+    };
+    const navName = pillNames[ev.id] || ev.name;
+
     navItems.push({
       id: cardId,
       icon: icon,
-      name: ev.name
+      name: navName
     });
+
+    const isPartyDay = (index === 3 || ev.theme === 'reception' || ev.id === 'event_4');
+    const destQuery = encodeURIComponent(`${ev.venue}, ${ev.address}`);
+    const dirUrl = ev.directionUrl || `https://www.google.com/maps/dir/?api=1&destination=${destQuery}`;
+
+    const locationMapHtml = isPartyDay ? `
+        <div class="venue-location-map-box">
+          <div class="venue-map-header">
+            <div class="venue-map-title">
+              <span>📍</span> पार्टी एवं आशीर्वाद समारोह स्थल (लोकेशन मैप)
+            </div>
+            <span class="venue-map-badge">Live Map</span>
+          </div>
+          <div class="venue-map-frame-wrapper">
+            <iframe 
+              src="https://www.openstreetmap.org/export/embed.html?bbox=81.695%2C20.845%2C81.725%2C20.875&amp;layer=mapnik&amp;marker=20.8594%2C81.7100" 
+              title="विवाह स्थल लोकेशन मैप - ईदगाह मैदान कुरुद"
+              loading="lazy" 
+              allowfullscreen>
+            </iframe>
+            <div class="venue-map-tag">
+              <span>🏛️ ईदगाह भवन / मैदान, कुरुद (धमतरी)</span>
+              <a href="${dirUrl}" target="_blank" rel="noopener noreferrer" style="color: #6EE7B7; font-weight: 700; text-decoration: underline;">दिशा-निर्देश लें ↗</a>
+            </div>
+          </div>
+        </div>
+    ` : '';
+
+    const actionsHtml = isPartyDay ? `
+        <div class="event-actions" style="display: flex; flex-direction: column; gap: 10px; margin-top: 14px;">
+          <a href="${dirUrl}" target="_blank" rel="noopener noreferrer" class="party-get-direction-btn" title="Google Maps पर रास्ता (दिशा-निर्देश) देखें">
+            <span style="font-size: 1.25rem;">🧭</span>
+            <span>Get Direction (रास्ता देखें)</span>
+          </a>
+          <div style="display: flex; gap: 10px; width: 100%;">
+            <a href="${ev.mapUrl}" target="_blank" rel="noopener noreferrer" class="btn-event-action btn-map" style="flex: 1; text-align: center; text-decoration: none;">
+              <span>🗺️</span> Maps पर देखें
+            </a>
+            <button class="btn-event-action btn-calendar" onclick="downloadEventCalendar('${ev.id}')" style="flex: 1; text-align: center; cursor: pointer;">
+              <span>📅</span> कैलेंडर में जोड़ें
+            </button>
+          </div>
+        </div>
+    ` : `
+        <div class="event-actions" style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px;">
+          <a href="${dirUrl}" target="_blank" rel="noopener noreferrer" class="btn-event-action btn-get-direction" style="flex: 1; min-width: 135px; text-align: center; text-decoration: none;" title="Google Maps पर रास्ता देखें">
+            <span>🧭</span> Get Direction
+          </a>
+          <a href="${ev.mapUrl}" target="_blank" rel="noopener noreferrer" class="btn-event-action btn-map" style="flex: 1; min-width: 110px; text-align: center; text-decoration: none;">
+            <span>🗺️</span> Maps
+          </a>
+          <button class="btn-event-action btn-calendar" onclick="downloadEventCalendar('${ev.id}')" style="flex: 1; min-width: 110px; text-align: center; cursor: pointer;">
+            <span>📅</span> कैलेंडर
+          </button>
+        </div>
+    `;
 
     const card = document.createElement('section');
     card.className = `royal-deck-card event-deck-card theme-${ev.theme}`;
@@ -471,16 +535,11 @@ function setupEventsJourney(events) {
           </div>
         </div>
 
-        <p style="font-size: 0.92rem; color: #F5EAE0; line-height: 1.55; margin-bottom: 20px; text-align: center;">${ev.description}</p>
+        <p style="font-size: 0.92rem; color: #F5EAE0; line-height: 1.55; margin-bottom: 12px; text-align: center;">${ev.description}</p>
 
-        <div class="event-actions" style="display: flex; gap: 10px; flex-wrap: wrap;">
-          <a href="${ev.mapUrl}" target="_blank" rel="noopener noreferrer" class="btn-event-action btn-map" style="flex: 1; min-width: 130px; text-align: center; text-decoration: none;">
-            <span>🗺️</span> Maps पर देखें
-          </a>
-          <button class="btn-event-action btn-calendar" onclick="downloadEventCalendar('${ev.id}')" style="flex: 1; min-width: 130px; text-align: center; cursor: pointer;">
-            <span>📅</span> कैलेंडर में जोड़ें
-          </button>
-        </div>
+        ${locationMapHtml}
+
+        ${actionsHtml}
 
         <!-- Animated Hand Swipe (Left & Right) Navigation Bar -->
         <div class="deck-hand-swipe-bar">
