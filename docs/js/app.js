@@ -948,7 +948,7 @@ function showToast(msg) {
 
 // 12. Audio Control with Mute / Unmute
 function setupAudio(musicUrl) {
-  if (!musicUrl) musicUrl = './audio/shehnai_melody.wav';
+  if (!musicUrl) musicUrl = './audio/kudmayi_shagna.mp3';
 
   audioPlayer = new Audio(resolveAssetUrl(musicUrl));
   audioPlayer.loop = true;
