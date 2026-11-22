@@ -310,7 +310,7 @@ function createSparkleBurst(centerX, centerY) {
 function setupCountdown(config) {
   if (!config) return;
 
-  const targetDateStr = config.targetDate || '2026-11-28T19:00:00+05:30';
+  const targetDateStr = config.targetDate || '2026-11-30T17:30:00+05:30';
   const targetTime = new Date(targetDateStr).getTime();
 
   const daysEl = document.getElementById('countDays');
@@ -319,8 +319,12 @@ function setupCountdown(config) {
   const secondsEl = document.getElementById('countSeconds');
   const badgeEl = document.getElementById('countdownBadge');
 
-  if (badgeEl && config.isDemoTime) {
-    badgeEl.textContent = config.demoTimeNote || 'डेमो समय: सायं 7:00 बजे (एडिटर में बदलें)';
+  if (badgeEl) {
+    if (config.demoTimeNote) {
+      badgeEl.textContent = config.demoTimeNote;
+    } else if (config.eventTitle) {
+      badgeEl.textContent = config.eventTitle;
+    }
   }
 
   function update() {
