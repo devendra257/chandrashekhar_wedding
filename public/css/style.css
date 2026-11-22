@@ -2109,53 +2109,61 @@ body {
 }
 
 .footer-company-text {
-  font-size: 0.72rem;
+  font-size: 0.65rem;
   color: var(--text-muted);
   letter-spacing: 0.3px;
-  opacity: 0.85;
+  opacity: 0.8;
 }
 
 .footer-company-contact {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-top: 2px;
+  gap: 6px;
+  margin-top: 1px;
 }
 
 .footer-company-phone {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 3px;
   background: rgba(212, 175, 55, 0.08);
-  border: 1px solid rgba(212, 175, 55, 0.35);
+  border: 1px solid rgba(212, 175, 55, 0.3);
   color: #B88E20;
-  font-size: 0.72rem;
+  font-size: 0.62rem;
   font-weight: 500;
-  padding: 2px 9px;
-  border-radius: 14px;
+  padding: 1px 7px;
+  border-radius: 12px;
   text-decoration: none;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.2px;
   transition: all 0.25s ease;
+}
+
+.footer-company-phone .phone-icon {
+  font-size: 0.58rem;
+}
+
+.footer-company-phone .phone-number {
+  font-size: 0.62rem;
 }
 
 .footer-company-phone:hover {
   background: rgba(212, 175, 55, 0.2);
   border-color: rgba(212, 175, 55, 0.6);
   color: #977213;
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
 .footer-company-wa {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 3px;
   background: rgba(37, 211, 102, 0.08);
-  border: 1px solid rgba(37, 211, 102, 0.35);
+  border: 1px solid rgba(37, 211, 102, 0.3);
   color: #128C7E;
-  font-size: 0.70rem;
+  font-size: 0.62rem;
   font-weight: 500;
-  padding: 2px 8px;
-  border-radius: 14px;
+  padding: 1px 7px;
+  border-radius: 12px;
   text-decoration: none;
   transition: all 0.25s ease;
 }
@@ -2163,7 +2171,7 @@ body {
 .footer-company-wa:hover {
   background: rgba(37, 211, 102, 0.2);
   color: #075E54;
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
 /* Discreet Admin Link in footer */
