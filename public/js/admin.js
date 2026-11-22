@@ -117,8 +117,9 @@ function populateForm(data) {
 
   // Company Logo & Branding
   const comp = gen.company || {};
-  setValue('companyNameInput', comp.name || 'Minto Wedding Planners');
-  setValue('companyTaglineInput', comp.tagline || 'Crafted with love by Minto Wedding');
+  setValue('companyNameInput', comp.name || 'Shree Creator');
+  setValue('companyTaglineInput', comp.tagline || 'Crafted with love by Shree Creator');
+  setValue('companyPhoneInput', comp.phone || '8770024607');
   const showLogoCheckbox = document.getElementById('showCompanyLogoCheckbox');
   if (showLogoCheckbox) showLogoCheckbox.checked = !!comp.showLogo;
 
@@ -533,6 +534,7 @@ async function saveAllChanges() {
   // 7. Company Logo & Branding (small & understated)
   invitationData.general.company.name = document.getElementById('companyNameInput').value;
   invitationData.general.company.tagline = document.getElementById('companyTaglineInput').value;
+  invitationData.general.company.phone = document.getElementById('companyPhoneInput').value;
   invitationData.general.company.showLogo = document.getElementById('showCompanyLogoCheckbox').checked;
 
   // 8. RSVP

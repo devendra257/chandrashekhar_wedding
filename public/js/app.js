@@ -91,6 +91,8 @@ function renderInvitation(data) {
   const company = data.general.company;
   const footerLogo = document.getElementById('footerCompanyLogo');
   const footerText = document.getElementById('footerCompanyText');
+  const footerPhone = document.getElementById('footerCompanyPhone');
+  const footerWA = document.getElementById('footerCompanyWhatsApp');
   const footerWrapper = document.getElementById('footerCompanyWrapper');
 
   if (company && company.showLogo && company.logoUrl) {
@@ -98,11 +100,27 @@ function renderInvitation(data) {
       footerLogo.src = company.logoUrl;
       footerLogo.style.display = 'block';
     }
-    if (footerText) footerText.textContent = company.tagline || company.name;
+    if (footerText) footerText.textContent = company.tagline || company.name || 'Crafted with love by Shree Creator';
+    
+    const phoneNum = company.phone || '8770024607';
+    if (footerPhone) {
+      footerPhone.href = `tel:${phoneNum}`;
+      const numSpan = footerPhone.querySelector('.phone-number');
+      if (numSpan) numSpan.textContent = phoneNum;
+    }
+    if (footerWA) {
+      footerWA.href = `https://wa.me/91${phoneNum}?text=${encodeURIComponent('नमस्ते Shree Creator! मुझे भी ऐसा डिजिटल वेडिंग कार्ड बनवाना है।')}`;
+    }
     if (footerWrapper) footerWrapper.style.display = 'flex';
   } else if (company && company.name) {
     if (footerLogo) footerLogo.style.display = 'none';
     if (footerText) footerText.textContent = company.name;
+    const phoneNum = company.phone || '8770024607';
+    if (footerPhone) {
+      footerPhone.href = `tel:${phoneNum}`;
+      const numSpan = footerPhone.querySelector('.phone-number');
+      if (numSpan) numSpan.textContent = phoneNum;
+    }
     if (footerWrapper) footerWrapper.style.display = 'flex';
   } else {
     if (footerWrapper) footerWrapper.style.display = 'none';
@@ -468,7 +486,7 @@ function setupEventsJourney(events) {
     { id: 'deck-story', icon: '📖', name: 'दास्तान' },
     { id: 'deck-families', icon: '👨‍👩‍👧‍👦', name: 'परिवार' },
     { id: 'deck-gallery', icon: '🖼️', name: 'गैलरी' },
-    { id: 'deck-rsvp', icon: '💌', name: 'RSVP' }
+    { id: 'deck-rsvp', icon: '📤', name: 'शेयर करें' }
   );
 
   navItems.forEach((item, idx) => {
@@ -820,25 +838,53 @@ function initLightboxControls() {
   });
 }
 
-// 11. WhatsApp RSVP & Share Controls
+// 11. WhatsApp Share & Universal Sharing Controls (Any visitor can share the URL)
 function setupRSVP(rsvpConfig) {
-  if (!rsvpConfig) return;
-  const btn = document.getElementById('whatsappRsvpBtn');
-  if (!btn) return;
+  const groom = invitationData?.couple?.groom?.name || 'चि. चन्द्रशेखर';
+  const bride = invitationData?.couple?.bride?.name || 'सौ. का. चन्द्रकिरण';
 
-  const phone = (rsvpConfig.whatsappNumber || '919876543210').replace(/[^0-9]/g, '');
-  const msg = encodeURIComponent(rsvpConfig.defaultMessage || 'नमस्ते! हम विवाह समारोह में अवश्य उपस्थित होंगे।');
-  btn.href = `https://wa.me/${phone}?text=${msg}`;
+  // 1. WhatsApp Share Button (Opens WhatsApp with invitation URL for ANY contact/group)
+  const waShareBtn = document.getElementById('whatsappShareBtn') || document.getElementById('whatsappRsvpBtn');
+  if (waShareBtn) {
+    waShareBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const currentUrl = window.location.origin + window.location.pathname;
+      const shareText = `🌸 || श्री गणेशाय नमः || 🌸\n\nसाहू परिवार का सस्नेह आमंत्रण:\n${groom} संग ${bride} के शुभ विवाह का डिजिटल निमंत्रण पत्र देखने के लिए नीचे दिए गए लिंक पर क्लिक करें:\n\n👉 ${currentUrl}\n\n✨ शुभ विवाह: 30 नवम्बर 2026 (गोधुली बेला)\n🙏 आप सपरिवार सादर आमंत्रित हैं!`;
+      const waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
+      window.open(waUrl, '_blank');
+    });
+  }
 
+  // 2. Direct Link Copy Button
+  const copyBtn = document.getElementById('copyInviteLinkBtn');
+  const copyToast = document.getElementById('shareCopyToast');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const currentUrl = window.location.origin + window.location.pathname;
+      try {
+        await navigator.clipboard.writeText(currentUrl);
+        if (copyToast) {
+          copyToast.style.display = 'block';
+          setTimeout(() => { copyToast.style.display = 'none'; }, 4000);
+        }
+        showToast('✨ निमंत्रण लिंक कॉपी हो गया!');
+      } catch (err) {
+        // Fallback prompt
+        prompt('निमंत्रण लिंक कॉपी करें:', currentUrl);
+      }
+    });
+  }
+
+  // 3. Other Apps Share (Web Share API)
   const shareBtn = document.getElementById('shareInviteBtn');
   if (shareBtn) {
     shareBtn.addEventListener('click', async () => {
-      const groom = invitationData?.couple?.groom?.name || 'चि. चन्द्रशेखर';
-      const bride = invitationData?.couple?.bride?.name || 'सौ. का. चन्द्रकिरण';
+      const currentUrl = window.location.origin + window.location.pathname;
       const shareData = {
-        title: 'शुभ विवाह निमंत्रण पत्र',
-        text: `${groom} संग ${bride} के शुभ विवाह समारोह का पावन निमंत्रण पत्र। कृपया पधारकर अपना स्नेह व आशीर्वाद प्रदान करें।`,
-        url: window.location.href
+        title: `${groom} संग ${bride} — शुभ विवाह निमंत्रण पत्र`,
+        text: `🌸 साहू परिवार का सस्नेह आमंत्रण:\n${groom} संग ${bride} के शुभ विवाह का डिजिटल निमंत्रण पत्र। कृपया पधारकर अपना स्नेह व आशीर्वाद प्रदान करें।`,
+        url: currentUrl
       };
 
       if (navigator.share) {
@@ -848,10 +894,7 @@ function setupRSVP(rsvpConfig) {
           console.log('Share canceled or failed:', err);
         }
       } else {
-        // Fallback: Copy Link
-        navigator.clipboard.writeText(window.location.href).then(() => {
-          showToast('निमंत्रण लिंक कॉपी हो गया है!');
-        });
+        if (copyBtn) copyBtn.click();
       }
     });
   }
