@@ -168,7 +168,17 @@ function setText(id, text) {
 // 3. Cinematic Envelope Opening
 function initEnvelopeOpening() {
   const openEnvelope = () => {
-    // Play sound if allowed
+    // Push history state so mobile Back button works naturally
+    try {
+      if (window.history && window.history.pushState) {
+        window.history.pushState({ cardOpened: true }, '', '#card');
+      }
+    } catch (e) {}
+
+    // Reset and play sound fresh from start
+    if (audioPlayer) {
+      audioPlayer.currentTime = 0;
+    }
     playAudio();
 
     // Animate wax seal burst
@@ -200,6 +210,20 @@ function initEnvelopeOpening() {
 
   if (openBtn) openBtn.addEventListener('click', openEnvelope);
   if (waxSeal) waxSeal.addEventListener('click', openEnvelope);
+
+  // Handle mobile Back button to stop audio and return to closed envelope
+  window.addEventListener('popstate', (event) => {
+    pauseAudio();
+
+    if (!event.state || !event.state.cardOpened) {
+      if (envelopeExp) envelopeExp.classList.remove('opened');
+      if (invitationMain) invitationMain.classList.remove('visible');
+      const wrapper = document.querySelector('.envelope-wrapper');
+      if (wrapper) wrapper.classList.remove('opening');
+      if (waxSeal) waxSeal.classList.remove('broken');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
 }
 
 // 4. Floating Petals Canvas Animation
@@ -1005,7 +1029,7 @@ function showToast(msg) {
   }, 3000);
 }
 
-// 12. Audio Control with Mute / Unmute
+// 12. Audio Control with Mute / Unmute & Mobile Background Auto-Stop
 function setupAudio(musicUrl) {
   if (!musicUrl) musicUrl = './audio/kudmayi_shagna.mp3';
 
@@ -1022,6 +1046,33 @@ function setupAudio(musicUrl) {
       }
     });
   }
+
+  // Mobile Lifecycle Listeners:
+  // Automatically stop audio when going to phone Home Screen, switching apps, locking screen, or leaving page
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden || document.visibilityState === 'hidden') {
+      pauseAudio();
+    }
+  });
+
+  // When window loses focus (e.g. app switcher, home screen gesture, pull-down notification panel)
+  window.addEventListener('blur', () => {
+    pauseAudio();
+  });
+
+  // When navigating back / leaving page
+  window.addEventListener('pagehide', () => {
+    pauseAudio();
+  });
+
+  window.addEventListener('beforeunload', () => {
+    pauseAudio();
+  });
+
+  // When mobile browser back button / gesture is triggered
+  window.addEventListener('popstate', () => {
+    pauseAudio();
+  });
 }
 
 function playAudio() {
